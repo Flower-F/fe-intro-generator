@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "license": "MIT",
-  "description": "可以通过后台的简单配置完成产品介绍页面",
+  "description": "可以通过后台的简单配置完成一个前端人的简介",
   "dependencies": {
     "@babel/core": "^7.16.0",
     "@pmmmwh/react-refresh-webpack-plugin": "^0.5.3",
