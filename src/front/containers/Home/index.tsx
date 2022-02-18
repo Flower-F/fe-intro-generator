@@ -1,4 +1,5 @@
 import Detail from '../../components/Detail';
+import Footer from '../../components/Footer';
 import Hero from '../../components/Hero';
 import ProjectList from '../../components/ProjectList';
 import TechStackList from '../../components/TechStackList';
@@ -56,6 +57,7 @@ const Home = () => {
       <Detail {...contentData} />
       <Detail {...contentData1} />
       <ProjectList projects={projectData} />
+      <Footer />
     </>
   );
 };
