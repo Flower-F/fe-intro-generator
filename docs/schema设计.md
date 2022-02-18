@@ -13,13 +13,16 @@
       name: 'Intro',
       attributes: {
         showLogo: '', // true or false
+        logoUrl: '',
         title: '',
-        description: ''
+        description: '',
+        backgroundUrl: '',
+        backgroundHeight: '',
       },
       list: []
     },
     {
-      name: 'TechStack',
+      name: 'TechStackList',
       attributes: {
         title: '',
       },
@@ -27,8 +30,7 @@
         {
           name: 'TechStackItem',
           attributes: {
-            title: '',
-            description: '',
+            chosen: '', // true or false
           },
           list: []
         }

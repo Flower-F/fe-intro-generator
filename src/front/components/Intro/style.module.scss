@@ -1,0 +1,57 @@
+.intro {
+  position: relative;
+  background-repeat: no-repeat;
+  background-size: contain;
+  padding-bottom: 150px;
+
+  .person {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    height: 150px;
+    background-color: #fff;
+
+    .avatar {
+      position: relative;
+      top: -70px;
+      margin-left: 50px;
+      width: 200px;
+      height: 200px;
+      border-radius: 10px;
+    }
+
+    .content {
+      flex: 1;
+      width: 100%;
+      .title {
+        margin-top: 10px;
+        margin-left: 30px;
+        padding-right: 30px;
+        line-height: 50px;
+        font-size: 28px;
+        color: #000;
+        // 单行省略
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+      }
+
+      .description {
+        margin-right: 30px;
+        margin-left: 30px;
+        line-height: 32px;
+        height: 64px;
+        font-size: 18px;
+        color: #333;
+        // 多行省略
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+      }
+    }
+  }
+}
