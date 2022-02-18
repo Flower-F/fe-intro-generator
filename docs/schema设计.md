@@ -24,7 +24,6 @@
     {
       name: 'TechStackList',
       attributes: {
-        title: '',
       },
       list: [
         {
@@ -45,17 +44,16 @@
       list: []
     },
     {
-      name: 'Project',
+      name: 'ProjectList',
       attributes: {
-        title: '',
       },
       list: [
         {
-          name: 'CarouselItem',
+          name: 'ProjectItem',
           attributes: {
             title: '',
             description: '',
-            imgUrl: ''
+            link: '',
           },
           list: []
         }
