@@ -15,6 +15,7 @@ import {
   SiGitlab,
   SiNginx,
   SiDocker,
+  SiGitee,
 } from 'react-icons/si';
 
 interface ITechStack {
@@ -88,6 +89,11 @@ export const techStackListData: ITechStack[] = [
     title: 'Github',
     icon: <SiGithub />,
     color: '#000000',
+  },
+  {
+    title: 'Gitee',
+    icon: <SiGitee />,
+    color: '#c71d23',
   },
   {
     title: 'Gitlab',

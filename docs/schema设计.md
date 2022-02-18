@@ -10,14 +10,11 @@
   },
   list: [
     {
-      name: 'Intro',
+      name: 'Hero',
       attributes: {
-        showLogo: '', // true or false
-        logoUrl: '',
+        nickName: '',
         title: '',
         description: '',
-        backgroundUrl: '',
-        backgroundHeight: '',
       },
       list: []
     },

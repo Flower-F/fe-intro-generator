@@ -56,7 +56,9 @@ const ProjectList: React.FC<IProjectProps> = ({ projects }) => {
                 <AiOutlineLink />
               </a>
               <div className={styles.description}>说明：{item.description}</div>
-              <button className={styles.learnMore}>Learn More</button>
+              <a href={item.link} target="_blank" rel="noreferrer">
+                <button className={styles.learnMore}>Learn More</button>
+              </a>
             </div>
           ))}
         </Slider>

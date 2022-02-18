@@ -1,5 +1,5 @@
 import Detail from '../../components/Detail';
-import Intro from '../../components/Intro';
+import Hero from '../../components/Hero';
 import ProjectList from '../../components/ProjectList';
 import TechStackList from '../../components/TechStackList';
 
@@ -50,13 +50,13 @@ const Home = () => {
   ];
 
   return (
-    <div>
-      <Intro />
+    <>
+      <Hero />
       <TechStackList />
       <Detail {...contentData} />
       <Detail {...contentData1} />
       <ProjectList projects={projectData} />
-    </div>
+    </>
   );
 };
 

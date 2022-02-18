@@ -1,7 +1,7 @@
 import styles from './style.module.scss';
 import { techStackListData } from '../../../common/data/TechStackListData';
 
-const occupied = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1];
+const occupied = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1];
 
 const TechStackList = () => {
   return (
