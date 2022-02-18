@@ -4,8 +4,7 @@ const data = {
   showLogo: true,
   logoUrl: 'https://images-1305624698.cos.ap-guangzhou.myqcloud.com/logo.jpg',
   title: 'Flower-F',
-  description:
-    '一个前端爱好者，学习前端时间刚刚半年多。懂得不多，希望大家多多指教。',
+  description: '一个前端爱好者，希望大家多多指教。',
   backgroundUrl:
     'https://images-1305624698.cos.ap-guangzhou.myqcloud.com/bg.jpeg',
   backgroundHeight: '380',
@@ -32,7 +31,7 @@ const Intro = () => {
   backgroundHeight && (introStyle.height = parseInt(backgroundHeight) + 20);
 
   return (
-    <div className="wrapper">
+    <header className="wrapper">
       <div className={styles.intro} style={introStyle}>
         <div className={styles.person}>
           {showLogo && logoUrl ? (
@@ -44,7 +43,7 @@ const Intro = () => {
           </div>
         </div>
       </div>
-    </div>
+    </header>
   );
 };
 

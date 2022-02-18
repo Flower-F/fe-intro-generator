@@ -5,7 +5,7 @@ const occupied = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1];
 
 const TechStackList = () => {
   return (
-    <div className="wrapper">
+    <section className="wrapper">
       <h3 className={styles.tech}>我的技术栈</h3>
       <div className={styles.list}>
         {techStackListData.map((item, index) =>
@@ -24,7 +24,7 @@ const TechStackList = () => {
           ) : null,
         )}
       </div>
-    </div>
+    </section>
   );
 };
 

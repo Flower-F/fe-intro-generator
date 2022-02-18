@@ -37,16 +37,15 @@
       ]
     },
     {
-      name: 'Content',
+      name: 'Detail',
       attributes: {
-        title: '',
+        index: '',
         description: '',
-        imgUrl: ''
       },
       list: []
     },
     {
-      name: 'Carousel',
+      name: 'Project',
       attributes: {
         title: '',
       },
