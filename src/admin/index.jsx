@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { useDispatch, Provider } from 'react-redux';
 import HomeManagement from './containers/HomeManagement';
 import { Route, Routes, HashRouter as Router, NavLink } from 'react-router-dom';
-import { Layout, Menu, Tooltip } from 'antd';
+import { Layout, Menu, Tooltip, Spin } from 'antd';
 import {
   SettingOutlined,
   RollbackOutlined,
@@ -48,6 +48,11 @@ const useCollapsed = () => {
   };
 };
 
+const useLoading = () => {
+  const [loading, setLoading] = useState(false);
+  return { loading, setLoading };
+};
+
 const MyLayout = () => {
   const handleHomePageRedirect = () => {
     window.location.href = '/';
@@ -58,16 +63,20 @@ const MyLayout = () => {
     localStorage.removeItem('token');
     localStorage.removeItem('tokenExpiredAt');
     localStorage.removeItem('photo');
+    localStorage.removeItem('_authing_token');
+    localStorage.removeItem('_authing_user');
     window.location.reload();
   };
 
   const { collapsed, handleToggleCollapsed } = useCollapsed();
   const { changeSchema } = useStore();
+  const { loading, setLoading } = useLoading();
 
   const login = getLoginStatus();
   const photo = window.localStorage.photo;
 
   useEffect(() => {
+    setLoading(true);
     axiosInstance
       .get('/getLatestOne')
       .then((res) => {
@@ -76,8 +85,10 @@ const MyLayout = () => {
           // console.log(data.schema);
           changeSchema(parseJsonByString(data.schema));
         }
+        setLoading(false);
       })
       .catch(() => {
+        setLoading(false);
         // console.log('err', error);
       });
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -135,6 +146,7 @@ const MyLayout = () => {
               <Route path="/" element={<HomeManagement />}></Route>
               <Route path="/seo" element={<SEOManagement />}></Route>
             </Routes>
+            <div className={styles.spin}>{loading ? <Spin /> : null}</div>
           </Content>
         </Layout>
       </Layout>
