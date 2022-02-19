@@ -27,7 +27,6 @@ const BasicSetting = () => {
 
   // 最外层 schema 生成
   const handleSaveButtonClick = () => {
-    console.log(schema);
     // localStorage.schema = JSON.stringify(schema);
   };
 
