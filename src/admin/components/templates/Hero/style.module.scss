@@ -2,11 +2,7 @@
   display: flex;
   margin-top: 22px;
   .label {
-    width: 70px;
+    width: 40px;
     line-height: 32px;
-  }
-  &:last-child {
-    display: flex;
-    align-items: center;
   }
 }

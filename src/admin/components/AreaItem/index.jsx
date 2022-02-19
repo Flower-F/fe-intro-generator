@@ -5,6 +5,8 @@ import { cloneDeep } from 'lodash';
 import { SortableElement } from 'react-sortable-hoc';
 import Footer from '../templates/Footer';
 import Detail from '../templates/Detail';
+import Hero from '../templates/Hero';
+
 import {
   getChangePageChildAction,
   getDeletePageChildAction,
@@ -14,7 +16,7 @@ import styles from './style.module.scss';
 
 const { Option } = Select;
 
-const mapping = { Footer, Detail };
+const mapping = { Footer, Detail, Hero };
 
 const useStore = (index) => {
   const dispatch = useDispatch();

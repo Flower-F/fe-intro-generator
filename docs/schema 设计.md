@@ -12,7 +12,7 @@
     {
       "name": "Hero",
       "attributes": {
-        "nickname": "Flower-F",
+        "nickName": "Flower-F",
         "title": "FE Intro Generator",
         "description": "一款前端程序员的个人介绍页面生成器"
       },

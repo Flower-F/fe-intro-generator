@@ -1,4 +1,3 @@
-import React from 'react';
 import { Input, Button } from 'antd';
 
 import commonStyles from '../common.module.scss';
@@ -6,12 +5,9 @@ import styles from './style.module.scss';
 
 const Footer = (props) => {
   const {
-    attributes = {},
-    changeAttributes,
     children = [],
     changeChildren,
   } = props;
-  const { copyright, record } = attributes;
 
   const addItemToChildren = () => {
     const newChildren = [...children];

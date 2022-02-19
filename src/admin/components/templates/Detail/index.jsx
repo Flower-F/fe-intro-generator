@@ -8,7 +8,7 @@ const { Option } = Select;
 
 const Detail = (props) => {
   const { attributes = {}, changeAttributes } = props;
-  const { index = 0, reverse, description } = attributes;
+  const { index = 0, reverse = false, description = '' } = attributes;
 
   return (
     <div className={commonStyles.wrapper}>
