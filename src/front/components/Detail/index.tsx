@@ -4,14 +4,7 @@ import { useInView } from 'react-intersection-observer';
 import { techStackListData } from '../../../common/data/TechStackListData';
 
 import styles from './style.module.scss';
-
-interface IDetailSchema {
-  attributes: {
-    index: number;
-    description: string;
-    reverse: boolean;
-  };
-}
+import { IDetailSchema } from '../../../common/types/schema';
 
 interface IDetailProps {
   schema: IDetailSchema;

@@ -1,16 +1,6 @@
 import { AiOutlineLink } from 'react-icons/ai';
+import { IFooterSchema } from '../../../common/types/schema';
 import styles from './style.module.scss';
-
-interface IFooterItem {
-  attributes: {
-    link: string;
-    title: string;
-  };
-}
-
-interface IFooterSchema {
-  list: Array<IFooterItem>;
-}
 
 interface IFooterProps {
   schema: IFooterSchema;

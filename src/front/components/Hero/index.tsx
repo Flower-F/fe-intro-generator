@@ -1,13 +1,6 @@
 import React from 'react';
+import { IHeroSchema } from '../../../common/types/schema';
 import styles from './style.module.scss';
-
-interface IHeroSchema {
-  attributes: {
-    nickName: string;
-    title: string;
-    description: string;
-  };
-}
 
 interface IHeroProps {
   schema: IHeroSchema;

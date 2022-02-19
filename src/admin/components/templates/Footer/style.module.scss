@@ -1,0 +1,44 @@
+.row {
+  display: flex;
+  margin-top: 14px;
+  .label {
+    line-height: 40px;
+    width: 70px;
+  }
+  .content {
+    flex: 1;
+  }
+}
+
+.button {
+  margin: 10px 0;
+}
+
+.area {
+  position: relative;
+  border: 1px dashed #ccc;
+  padding: 0 10px;
+  margin-bottom: 20px;
+  .delete {
+    position: absolute;
+    right: -10px;
+    top: -10px;
+    background-color: #f00;
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    color: #fff;
+    font-size: 12px;
+    text-align: center;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+  .row {
+    display: flex;
+    margin-bottom: 10px;
+    .label {
+      line-height: 40px;
+      width: 40px;
+    }
+  }
+}

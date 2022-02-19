@@ -1,11 +1,6 @@
 import styles from './style.module.scss';
 import { techStackListData } from '../../../common/data/TechStackListData';
-
-interface ITechStackListSchema {
-  attributes: {
-    occupied: Array<number>;
-  };
-}
+import { ITechStackListSchema } from '../../../common/types/schema';
 
 interface ITechStackListProps {
   schema: ITechStackListSchema;

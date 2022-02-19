@@ -6,21 +6,10 @@ import Slider from 'react-slick';
 import { sliderSettings } from '../../../common/data/ProjectListData';
 
 import styles from './style.module.scss';
-
-interface IProjectItem {
-  attributes: {
-    link: string;
-    title: string;
-    description: string;
-  };
-}
-
-interface IProjectSchema {
-  list: Array<IProjectItem>;
-}
+import { IProjectListSchema } from '../../../common/types/schema';
 
 interface IProjectProps {
-  schema: IProjectSchema;
+  schema: IProjectListSchema;
 }
 
 const ProjectList: React.FC<IProjectProps> = ({ schema }) => {
