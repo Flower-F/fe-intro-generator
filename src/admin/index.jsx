@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { useDispatch, Provider } from 'react-redux';
 import HomeManagement from './containers/HomeManagement';
 import { Route, Routes, HashRouter as Router, NavLink } from 'react-router-dom';
-import { Layout, Menu } from 'antd';
+import { Layout, Menu, Tooltip } from 'antd';
 import {
   SettingOutlined,
   RollbackOutlined,
@@ -121,12 +121,14 @@ const MyLayout = () => {
                 onClick={handleToggleCollapsed}
               />
             )}
-            <img
-              src={photo}
-              alt="我的头像"
+            <Tooltip
+              arrowPointAtCenter
+              title="退出登录"
               className={styles.avatar}
               onClick={handleLogout}
-            />
+            >
+              <img src={photo} alt="我的头像" />
+            </Tooltip>
           </Header>
           <Content className={styles.content}>
             <Routes>
