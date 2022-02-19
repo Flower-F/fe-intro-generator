@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import { useDispatch, Provider } from 'react-redux';
 import HomeManagement from './containers/HomeManagement';
@@ -37,7 +37,7 @@ const useStore = () => {
 };
 
 const useCollapsed = () => {
-  const [collapsed, setCollapsed] = useState(false);
+  const [collapsed, setCollapsed] = useState(true);
   const handleToggleCollapsed = () => {
     setCollapsed(!collapsed);
   };

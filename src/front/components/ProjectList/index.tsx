@@ -3,7 +3,7 @@ import { FaArrowCircleLeft, FaArrowCircleRight } from 'react-icons/fa';
 import { AiOutlineLink } from 'react-icons/ai';
 import { IconContext } from 'react-icons';
 import Slider from 'react-slick';
-import { sliderSettings } from '../../../common/data/ProjectListData';
+import { getSliderSettings } from '../../../common/data/ProjectListData';
 
 import styles from './style.module.scss';
 import { IProjectListSchema } from '../../../common/types/schema';
@@ -36,7 +36,7 @@ const ProjectList: React.FC<IProjectProps> = ({ schema }) => {
         </div>
 
         <Slider
-          {...sliderSettings}
+          {...getSliderSettings(children.length)}
           ref={setSliderRef}
           className={styles.slider}
         >

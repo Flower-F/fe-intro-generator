@@ -10,12 +10,12 @@ const render = (item, index) => {
 const Home = () => {
   // const [pageSchema, setPageSchema] = useState({ attributes: {}, list: [] });
   // const { attributes, list } = pageSchema;
-  const [pageSchema, setPageSchema] = useState(
+  const [pageSchema] = useState(
     parseJsonByString(localStorage.schema, { attributes: {}, list: [] }),
   );
-  const { list, attributes } = pageSchema;
+  const { children } = pageSchema;
 
-  return <>{list.map((item, index) => render(item, index))}</>;
+  return <>{children.map((item, index) => render(item, index))}</>;
 };
 
 export default Home;

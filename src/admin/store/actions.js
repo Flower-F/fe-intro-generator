@@ -14,7 +14,7 @@ export const getChangeSchemaAction = (schema) => {
   };
 };
 
-export const getAddPageChildrenAction = (schema) => {
+export const getAddPageChildrenAction = () => {
   return {
     type: ADD_PAGE_CHILDREN,
     value: {},
