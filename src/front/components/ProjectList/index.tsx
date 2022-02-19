@@ -19,21 +19,7 @@ const ProjectList: React.FC<IProjectProps> = ({ schema }) => {
   return (
     <section className="wrapper">
       <div className={styles.projectList}>
-        <div className={styles.row}>
-          <div className={styles.header}>项目经历</div>
-          <div className={styles.buttons}>
-            <IconContext.Provider value={{ size: '3rem', color: '#6ab0fe' }}>
-              <FaArrowCircleLeft
-                className={styles.change}
-                onClick={sliderRef?.slickPrev}
-              />
-              <FaArrowCircleRight
-                className={styles.change}
-                onClick={sliderRef?.slickNext}
-              />
-            </IconContext.Provider>
-          </div>
-        </div>
+        <div className={styles.header}>项目经历</div>
 
         <Slider
           {...getSliderSettings(children.length)}
@@ -63,6 +49,21 @@ const ProjectList: React.FC<IProjectProps> = ({ schema }) => {
             ),
           )}
         </Slider>
+
+        <div className={styles.row}>
+          <div className={styles.buttons}>
+            <IconContext.Provider value={{ size: '3rem', color: '#6ab0fe' }}>
+              <FaArrowCircleLeft
+                className={styles.change}
+                onClick={sliderRef?.slickPrev}
+              />
+              <FaArrowCircleRight
+                className={styles.change}
+                onClick={sliderRef?.slickNext}
+              />
+            </IconContext.Provider>
+          </div>
+        </div>
       </div>
     </section>
   );

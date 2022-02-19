@@ -6,6 +6,7 @@ import {
   getChangeSchemaAction,
   getChangePageAttributeAction,
 } from '../../store/actions';
+import { axiosInstance } from '../../../common/request';
 import styles from './style.module.scss';
 
 const useStore = () => {
@@ -20,43 +21,58 @@ const useStore = () => {
   return { schema, changePageAttribute, changeSchema };
 };
 
-const BasicSetting = () => {
+const SEOManagement = () => {
   const { schema = {}, changePageAttribute, changeSchema } = useStore();
   const { attributes = {} } = schema;
-  const { title = '' } = attributes;
+  const { title = '', description = '' } = attributes;
 
-  // 最外层 schema 生成
   const handleSaveButtonClick = () => {
-    // localStorage.schema = JSON.stringify(schema);
+    axiosInstance
+      .post('/save', {
+        schema: JSON.stringify(schema),
+      })
+      .then(() => {})
+      .catch(() => {});
   };
 
   const handleResetButtonClick = () => {
-    // axiosInstance.get('/api/schema/getLatestOne').then((res) => {
-    //   const data = res?.data;
-    //   if (data) {
-    //     changeSchema(parseJsonByString(data.schema));
-    //   }
-    // });
-    const schema = localStorage.schema;
-    changeSchema(parseJsonByString(schema));
+    axiosInstance
+      .get('/getLatestOne')
+      .then((res) => {
+        const data = res?.data;
+        if (data) {
+          changeSchema(parseJsonByString(data.schema));
+        }
+      })
+      .catch(() => {});
   };
-
-  const handleTitleChange = useCallback(
-    (e) => {
-      changePageAttribute('title', e.target.value);
-    },
-    [changePageAttribute],
-  );
 
   return (
     <>
       <div className={styles.row}>
         <div className={styles.title}>页面标题：</div>
         <div className={styles.content}>
-          <Input value={title} onChange={handleTitleChange} />
+          <Input
+            value={title}
+            onChange={(e) => {
+              changePageAttribute('title', e.target.value);
+            }}
+            placeholder="请输入页面标题（尽量简洁）"
+          />
         </div>
       </div>
-
+      <div className={styles.row}>
+        <div className={styles.title}>页面描述：</div>
+        <div className={styles.content}>
+          <Input
+            value={description}
+            onChange={(e) => {
+              changePageAttribute('description', e.target.value);
+            }}
+            placeholder="请输入页面描述（尽量简洁）"
+          />
+        </div>
+      </div>
       <div className={styles.buttons}>
         <Button type="primary" onClick={handleSaveButtonClick}>
           保存区块配置
@@ -73,4 +89,4 @@ const BasicSetting = () => {
   );
 };
 
-export default BasicSetting;
+export default SEOManagement;

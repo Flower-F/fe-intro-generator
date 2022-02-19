@@ -4,6 +4,7 @@ import AreaList from '../../components/AreaList';
 import { parseJsonByString } from '../../../common/utils';
 import { useSelector, useDispatch } from 'react-redux';
 import { getChangeSchemaAction } from '../../store/actions';
+import { axiosInstance } from '../../../common/request';
 
 const useStore = () => {
   const dispatch = useDispatch();
@@ -17,29 +18,25 @@ const useStore = () => {
 const HomeManagement = () => {
   const { schema, changeSchema } = useStore();
 
-  // 最外层 schema 生成
   const handleSaveButtonClick = () => {
-    // localStorage.schema = JSON.stringify(schema);
-    // axiosInstance
-    //   .post("/api/schema/save", {
-    //     schema: JSON.stringify(schema),
-    //   })
-    //   .then(() => {});
-
-    localStorage.schema = JSON.stringify(schema);
+    axiosInstance
+      .post('/save', {
+        schema: JSON.stringify(schema),
+      })
+      .then(() => {})
+      .catch(() => {});
   };
 
   const handleResetButtonClick = () => {
-    // axiosInstance.get('/api/schema/getLatestOne').then((res) => {
-    //   const data = res?.data?.data;
-    //   if (data) {
-    //     changeSchema(parseJsonByString(data.schema));
-    //   }
-    // });
-    const schema = localStorage.schema;
-    if (schema) {
-      changeSchema(parseJsonByString(schema));
-    }
+    axiosInstance
+      .get('/getLatestOne')
+      .then((res) => {
+        const data = res?.data;
+        if (data) {
+          changeSchema(parseJsonByString(data.schema));
+        }
+      })
+      .catch(() => {});
   };
 
   return (

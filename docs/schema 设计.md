@@ -6,7 +6,8 @@
 {
   "name": "Page",
   "attributes": {
-    "title": "FE Intro Generator"
+    "title": "FE Intro Generator",
+    "description": ""
   },
   "children": [
     {

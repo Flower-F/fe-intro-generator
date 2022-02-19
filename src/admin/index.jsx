@@ -5,19 +5,20 @@ import HomeManagement from './containers/HomeManagement';
 import { Route, Routes, HashRouter as Router, NavLink } from 'react-router-dom';
 import { Layout, Menu } from 'antd';
 import {
-  HomeOutlined,
   SettingOutlined,
   RollbackOutlined,
   MenuUnfoldOutlined,
   MenuFoldOutlined,
+  SearchOutlined,
 } from '@ant-design/icons';
-import BasicSetting from './containers/BasicSetting';
+import SEOManagement from './containers/SEOManagement';
 import Login from './containers/Login';
 import store from './store';
 import { getChangeSchemaAction } from './store/actions';
 import { parseJsonByString } from '../common/utils';
 import { initAuthClient, getAuthClient } from '@authing/react-ui-components';
 import { getLoginStatus } from './utils/login';
+import { axiosInstance } from '../common/request';
 import 'normalize.css';
 import 'antd/dist/antd.css';
 import styles from './style.module.scss';
@@ -67,16 +68,18 @@ const MyLayout = () => {
   const photo = window.localStorage.photo;
 
   useEffect(() => {
-    // axiosInstance.get('/api/schema/getLatestOne').then((res) => {
-    //   const data = res?.data;
-    //   if (data) {
-    //     changeSchema(parseJsonByString(data.schema));
-    //   }
-    // });
-
-    const schema = localStorage.schema;
-    changeSchema(parseJsonByString(schema));
-
+    axiosInstance
+      .get('/getLatestOne')
+      .then((res) => {
+        const data = res?.data;
+        if (data) {
+          // console.log(data.schema);
+          changeSchema(parseJsonByString(data.schema));
+        }
+      })
+      .catch(() => {
+        // console.log('err', error);
+      });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -90,11 +93,11 @@ const MyLayout = () => {
           collapsed={collapsed}
         >
           <Menu theme="dark" mode="inline" defaultSelectedKeys={['admin-home']}>
-            <Menu.Item key="admin-home" icon={<HomeOutlined />}>
+            <Menu.Item key="admin-home" icon={<SettingOutlined />}>
               <NavLink to="/">首页内容管理</NavLink>
             </Menu.Item>
-            <Menu.Item key="admin-setting" icon={<SettingOutlined />}>
-              <NavLink to="/setting">基础内容配置</NavLink>
+            <Menu.Item key="admin-setting" icon={<SearchOutlined />}>
+              <NavLink to="/seo">SEO 优化</NavLink>
             </Menu.Item>
             <Menu.Item
               key="admin-back"
@@ -128,7 +131,7 @@ const MyLayout = () => {
           <Content className={styles.content}>
             <Routes>
               <Route path="/" element={<HomeManagement />}></Route>
-              <Route path="/setting" element={<BasicSetting />}></Route>
+              <Route path="/seo" element={<SEOManagement />}></Route>
             </Routes>
           </Content>
         </Layout>
