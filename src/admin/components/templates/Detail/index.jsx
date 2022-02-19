@@ -10,12 +10,6 @@ const Detail = (props) => {
   const { attributes = {}, changeAttributes } = props;
   const { index = 0, reverse, description } = attributes;
 
-  const handleReverseChange = (checked) => {
-    changeAttributes({
-      reverse: checked,
-    });
-  };
-
   return (
     <div className={commonStyles.wrapper}>
       <div className={styles.row}>
@@ -44,7 +38,14 @@ const Detail = (props) => {
       </div>
       <div className={styles.row}>
         <span className={styles.label}>图片在左</span>
-        <Switch checked={reverse} onChange={handleReverseChange} />
+        <Switch
+          checked={reverse}
+          onChange={(checked) => {
+            changeAttributes({
+              reverse: checked,
+            });
+          }}
+        />
       </div>
     </div>
   );

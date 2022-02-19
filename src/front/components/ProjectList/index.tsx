@@ -13,7 +13,7 @@ interface IProjectProps {
 }
 
 const ProjectList: React.FC<IProjectProps> = ({ schema }) => {
-  const { list = [] } = schema;
+  const { children = [] } = schema;
   const [sliderRef, setSliderRef] = useState<Slider | null>(null);
 
   return (
@@ -40,7 +40,7 @@ const ProjectList: React.FC<IProjectProps> = ({ schema }) => {
           ref={setSliderRef}
           className={styles.slider}
         >
-          {list.map(
+          {children.map(
             (
               { attributes: { link = '', title = '', description = '' } },
               index,

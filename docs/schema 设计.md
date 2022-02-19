@@ -1,6 +1,6 @@
 # Schema 设计
 
-所有关于 schema 的设计都会放在本文档。每一级 schema 均包括属性 name、attributes、list，保证了 schema 的可拓展性。
+所有关于 schema 的设计都会放在本文档。每一级 schema 均包括属性 name、attributes、children 三部分，保证了 schema 的可拓展性。
 
 ```json
 {
@@ -8,7 +8,7 @@
   "attributes": {
     "title": "FE Intro Generator"
   },
-  "list": [
+  "children": [
     {
       "name": "Hero",
       "attributes": {
@@ -16,14 +16,14 @@
         "title": "FE Intro Generator",
         "description": "一款前端程序员的个人介绍页面生成器"
       },
-      "list": []
+      "children": []
     },
     {
       "name": "TechStackList",
       "attributes": {
         "occupied": [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
       },
-      "list": []
+      "children": []
     },
     {
       "name": "Detail",
@@ -32,7 +32,7 @@
         "reverse": false,
         "description": "掌握 CSS 基本语法，以及常见的布局类型，如 flex 布局、gird 布局、瀑布流布局等，了解常见的响应式布局方法。"
       },
-      "list": []
+      "children": []
     },
     {
       "name": "Detail",
@@ -41,12 +41,12 @@
         "reverse": true,
         "description": "掌握 js 常见知识，包括 ES6+ 语法，如 Map、Set、Promise、async & await 等。"
       },
-      "list": []
+      "children": []
     },
     {
       "name": "ProjectList",
       "attributes": {},
-      "list": [
+      "children": [
         {
           "name": "ProjectItem",
           "attributes": {
@@ -54,21 +54,21 @@
             "title": "处处弹幕",
             "description": "处处弹幕是一款便捷式弹幕插件。可以嵌入网站使用，也可以作为浏览器插件使用，还可以选择根据源码的弹幕类进行拓展，打造属于自己的弹幕系统。"
           },
-          "list": []
+          "children": []
         }
       ]
     },
     {
       "name": "Footer",
       "attributes": {},
-      "list": [
+      "children": [
         {
           "name": "FooterItem",
           "attributes": {
             "title": "123123",
             "link": "http://localhost:3000/admin.html"
           },
-          "list": []
+          "children": []
         }
       ]
     }

@@ -6,7 +6,7 @@ export interface IDetailSchema {
     description: string;
     reverse: boolean;
   };
-  list: [];
+  children: [];
 }
 
 // Footer
@@ -16,13 +16,13 @@ interface IFooterItem {
     link: string;
     title: string;
   };
-  list: [];
+  children: [];
 }
 
 export interface IFooterSchema {
   name: '';
   attributes: {};
-  list: Array<IFooterItem>;
+  children: Array<IFooterItem>;
 }
 
 // Hero
@@ -33,7 +33,7 @@ export interface IHeroSchema {
     title: string;
     description: string;
   };
-  list: [];
+  children: [];
 }
 
 // ProjectList
@@ -44,13 +44,13 @@ interface IProjectItem {
     title: string;
     description: string;
   };
-  list: [];
+  children: [];
 }
 
 export interface IProjectListSchema {
   name: '';
   attributes: {};
-  list: Array<IProjectItem>;
+  children: Array<IProjectItem>;
 }
 
 // TechStackList
@@ -59,20 +59,5 @@ export interface ITechStackListSchema {
   attributes: {
     occupied: Array<number>;
   };
-  list: [];
-}
-
-export interface IPageSchema {
-  name: '';
-  attributes: {
-    title: string;
-    description: string;
-  };
-  list: Array<
-    ITechStackListSchema &
-      IDetailSchema &
-      IFooterSchema &
-      IProjectListSchema &
-      IHeroSchema
-  >;
+  children: [];
 }

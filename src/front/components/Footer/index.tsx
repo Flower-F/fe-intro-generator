@@ -7,13 +7,13 @@ interface IFooterProps {
 }
 
 const Footer: React.FC<IFooterProps> = ({ schema }) => {
-  const { list = [] } = schema;
+  const { children = [] } = schema;
 
   return (
     <div className="wrapper">
       <div className={styles.footer}>
         <ul className={styles.list}>
-          {list.map(({ attributes: { link = '', title = '' } }, index) => (
+          {children.map(({ attributes: { link = '', title = '' } }, index) => (
             <li className={styles.item} key={index}>
               <a
                 href={link}
