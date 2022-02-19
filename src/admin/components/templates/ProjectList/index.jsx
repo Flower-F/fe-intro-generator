@@ -4,13 +4,15 @@ import { GiCancel } from 'react-icons/gi';
 import commonStyles from '../common.module.scss';
 import styles from './style.module.scss';
 
-const Footer = (props) => {
+const { TextArea } = Input;
+
+const ProjectList = (props) => {
   const { children = [], changeChildren } = props;
 
   const addItemToChildren = () => {
     const newChildren = [...children];
     newChildren.push({
-      name: 'FooterItem',
+      name: 'ProjectItem',
       attributes: {
         title: '',
         link: '',
@@ -44,7 +46,7 @@ const Footer = (props) => {
       >
         新增列表项
       </Button>
-      {children.map(({ attributes: { title, link } }, index) => (
+      {children.map(({ attributes: { title, description, link } }, index) => (
         <div className={styles.area} key={index}>
           <div className={styles.delete}>
             <GiCancel onClick={() => deleteItemFromChildren(index)} />
@@ -58,6 +60,18 @@ const Footer = (props) => {
               onChange={(e) =>
                 changeChildrenItem(index, 'title', e.target.value)
               }
+            />
+          </div>
+          <div className={styles.row}>
+            <span className={styles.label}>描述</span>
+            <TextArea
+              rows={4}
+              placeholder="请输入关于项目的描述"
+              value={description}
+              onChange={(e) =>
+                changeChildrenItem(index, 'description', e.target.value)
+              }
+              style={{ marginLeft: 4 }}
             />
           </div>
           <div className={styles.row}>
@@ -77,4 +91,4 @@ const Footer = (props) => {
   );
 };
 
-export default Footer;
+export default ProjectList;

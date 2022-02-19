@@ -7,6 +7,7 @@ import Footer from '../templates/Footer';
 import Detail from '../templates/Detail';
 import Hero from '../templates/Hero';
 import TechStackList from '../templates/TechStackList';
+import ProjectList from '../templates/ProjectList';
 
 import {
   getChangePageChildAction,
@@ -17,7 +18,7 @@ import styles from './style.module.scss';
 
 const { Option } = Select;
 
-const mapping = { Footer, Detail, Hero, TechStackList };
+const mapping = { Footer, Detail, Hero, TechStackList, ProjectList };
 
 const useStore = (index) => {
   const dispatch = useDispatch();
@@ -113,6 +114,8 @@ const AreaItem = (props) => {
           visible={isModalVisible}
           onOk={handleModalOk}
           onCancel={handleModalCancel}
+          okText="确认"
+          cancelText="取消"
           bodyStyle={{ maxHeight: 500, overflowY: 'auto' }}
         >
           <Select
