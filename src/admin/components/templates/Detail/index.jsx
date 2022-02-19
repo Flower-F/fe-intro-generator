@@ -10,7 +10,7 @@ const Detail = (props) => {
   const { attributes = {}, changeAttributes } = props;
   const { index = 0, reverse = false, description = '' } = attributes;
 
-  return (
+  return index < techStackListData.length ? (
     <div className={commonStyles.wrapper}>
       <div className={styles.row}>
         <span className={styles.label}>技能点</span>
@@ -48,7 +48,7 @@ const Detail = (props) => {
         />
       </div>
     </div>
-  );
+  ) : null;
 };
 
 export default Detail;
