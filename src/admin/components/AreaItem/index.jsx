@@ -6,6 +6,7 @@ import { SortableElement } from 'react-sortable-hoc';
 import Footer from '../templates/Footer';
 import Detail from '../templates/Detail';
 import Hero from '../templates/Hero';
+import TechStackList from '../templates/TechStackList';
 
 import {
   getChangePageChildAction,
@@ -16,7 +17,7 @@ import styles from './style.module.scss';
 
 const { Option } = Select;
 
-const mapping = { Footer, Detail, Hero };
+const mapping = { Footer, Detail, Hero, TechStackList };
 
 const useStore = (index) => {
   const dispatch = useDispatch();
