@@ -7,17 +7,24 @@ import { sliderSettings } from '../../../common/data/ProjectListData';
 
 import styles from './style.module.scss';
 
-interface IProject {
-  link: string;
-  title: string;
-  description: string;
+interface IProjectItem {
+  attributes: {
+    link: string;
+    title: string;
+    description: string;
+  };
+}
+
+interface IProjectSchema {
+  list: Array<IProjectItem>;
 }
 
 interface IProjectProps {
-  projects: IProject[];
+  schema: IProjectSchema;
 }
 
-const ProjectList: React.FC<IProjectProps> = ({ projects }) => {
+const ProjectList: React.FC<IProjectProps> = ({ schema }) => {
+  const { list = [] } = schema;
   const [sliderRef, setSliderRef] = useState<Slider | null>(null);
 
   return (
@@ -44,23 +51,28 @@ const ProjectList: React.FC<IProjectProps> = ({ projects }) => {
           ref={setSliderRef}
           className={styles.slider}
         >
-          {projects.map((item, index) => (
-            <div key={index} className={styles.imgWrapper}>
-              <a
-                href={item.link}
-                className={styles.title}
-                target="_blank"
-                rel="noreferrer"
-              >
-                {item.title}
-                <AiOutlineLink />
-              </a>
-              <div className={styles.description}>说明：{item.description}</div>
-              <a href={item.link} target="_blank" rel="noreferrer">
-                <button className={styles.learnMore}>Learn More</button>
-              </a>
-            </div>
-          ))}
+          {list.map(
+            (
+              { attributes: { link = '', title = '', description = '' } },
+              index,
+            ) => (
+              <div key={index} className={styles.imgWrapper}>
+                <a
+                  href={link}
+                  className={styles.title}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  {title}
+                  <AiOutlineLink />
+                </a>
+                <div className={styles.description}>说明：{description}</div>
+                <a href={link} target="_blank" rel="noreferrer">
+                  <button className={styles.learnMore}>Learn More</button>
+                </a>
+              </div>
+            ),
+          )}
         </Slider>
       </div>
     </section>

@@ -1,31 +1,37 @@
 import { AiOutlineLink } from 'react-icons/ai';
 import styles from './style.module.scss';
 
-const data = [
-  {
-    title: 'My Github',
-    link: 'https://github.com/Flower-F',
-  },
-  {
-    title: '后台系统',
-    link: 'http://localhost:3000/admin.html',
-  },
-];
+interface IFooterItem {
+  attributes: {
+    link: string;
+    title: string;
+  };
+}
 
-const Footer = () => {
+interface IFooterSchema {
+  list: Array<IFooterItem>;
+}
+
+interface IFooterProps {
+  schema: IFooterSchema;
+}
+
+const Footer: React.FC<IFooterProps> = ({ schema }) => {
+  const { list = [] } = schema;
+
   return (
     <div className="wrapper">
       <div className={styles.footer}>
         <ul className={styles.list}>
-          {data.map((item, index) => (
+          {list.map(({ attributes: { link = '', title = '' } }, index) => (
             <li className={styles.item} key={index}>
               <a
-                href={item.link}
+                href={link}
                 target="_blank"
                 rel="noreferrer"
                 className={styles.link}
               >
-                {item.title}
+                {title}
                 <AiOutlineLink />
               </a>
             </li>

@@ -1,13 +1,22 @@
+import React from 'react';
 import styles from './style.module.scss';
 
-const data = {
-  nickName: 'Flower-F',
-  title: 'FE Intro Generator',
-  description: '一款前端程序员的个人介绍页面生成器',
-};
+interface IHeroSchema {
+  attributes: {
+    nickName: string;
+    title: string;
+    description: string;
+  };
+}
 
-const Hero = () => {
-  const { title, description, nickName } = data;
+interface IHeroProps {
+  schema: IHeroSchema;
+}
+
+const Hero: React.FC<IHeroProps> = ({ schema }) => {
+  // const { title, description, nickName } = data;
+  const { attributes = { nickName: '', title: '', description: '' } } = schema;
+  const { nickName, title, description } = attributes;
 
   return (
     <section className={styles.hero}>

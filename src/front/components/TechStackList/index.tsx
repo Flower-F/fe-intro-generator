@@ -1,9 +1,19 @@
 import styles from './style.module.scss';
 import { techStackListData } from '../../../common/data/TechStackListData';
 
-const occupied = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1];
+interface ITechStackListSchema {
+  attributes: {
+    occupied: Array<number>;
+  };
+}
 
-const TechStackList = () => {
+interface ITechStackListProps {
+  schema: ITechStackListSchema;
+}
+
+const TechStackList: React.FC<ITechStackListProps> = ({ schema }) => {
+  const { attributes = { occupied: [] } } = schema;
+  const { occupied } = attributes;
   return (
     <section className="wrapper">
       <h3 className={styles.tech}>我的技术栈</h3>

@@ -1,0 +1,89 @@
+{
+  "name": "Page",
+  "attributes": {
+    "title": "FE Intro Generator"
+  },
+  "list": [
+    {
+      "name": "Hero",
+      "attributes": {
+        "nickname": "Flower-F",
+        "title": "FE Intro Generator",
+        "description": "一款前端程序员的个人介绍页面生成器"
+      },
+      "list": []
+    },
+    {
+      "name": "TechStackList",
+      "attributes": {
+        "occupied": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "list": []
+    },
+    {
+      "name": "Detail",
+      "attributes": {
+        "index": 1,
+        "reverse": false,
+        "description": "掌握 CSS 基本语法，以及常见的布局类型，如 flex 布局、gird 布局、瀑布流布局等，了解常见的响应式布局方法。"
+      },
+      "list": []
+    },
+    {
+      "name": "Detail",
+      "attributes": {
+        "index": 1,
+        "reverse": true,
+        "description": "掌握 js 常见知识，包括 ES6+ 语法，如 Map、Set、Promise、async & await 等。"
+      },
+      "list": []
+    },
+    {
+      "name": "ProjectList",
+      "attributes": {},
+      "list": [
+        {
+          "name": "ProjectItem",
+          "attributes": {
+            "link": "https://github.com/Flower-F/bullet-chat-everywhere",
+            "title": "处处弹幕",
+            "description": "处处弹幕是一款便捷式弹幕插件。可以嵌入网站使用，也可以作为浏览器插件使用，还可以选择根据源码的弹幕类进行拓展，打造属于自己的弹幕系统。"
+          },
+          "list": []
+        }
+      ]
+    },
+    {
+      "name": "Footer",
+      "attributes": {},
+      "list": [
+        {
+          "name": "FooterItem",
+          "attributes": {
+            "title": "123123",
+            "link": "http://localhost:3000/admin.html"
+          },
+          "list": []
+        }
+      ]
+    }
+  ]
+}

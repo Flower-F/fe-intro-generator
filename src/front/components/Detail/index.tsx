@@ -5,12 +5,22 @@ import { techStackListData } from '../../../common/data/TechStackListData';
 
 import styles from './style.module.scss';
 
-interface DetailProps {
-  index: number;
-  description: string;
+interface IDetailSchema {
+  attributes: {
+    index: number;
+    description: string;
+    reverse: boolean;
+  };
 }
 
-const Detail: React.FC<DetailProps> = ({ index, description }) => {
+interface IDetailProps {
+  schema: IDetailSchema;
+}
+
+const Detail: React.FC<IDetailProps> = ({ schema }) => {
+  const { attributes = { index: 0, description: '', reverse: false } } = schema;
+  const { index, description, reverse } = attributes;
+
   const initial = { opacity: 0, y: 30 };
   const animation = useAnimation();
 
@@ -29,13 +39,13 @@ const Detail: React.FC<DetailProps> = ({ index, description }) => {
     <section
       ref={ref}
       className={`wrapper ${styles.wrapper} ${
-        index % 2 === 0 ? `${styles.inverse}` : `${styles.reverse}`
+        reverse ? `${styles.inverse}` : `${styles.reverse}`
       }`}
     >
       {
         <motion.div
           initial={initial}
-          transition={{ delay: 0.5, duration: 0.6 }}
+          transition={{ delay: 0.3, duration: 0.6 }}
           animate={animation}
           className={styles.img}
         >
@@ -53,7 +63,7 @@ const Detail: React.FC<DetailProps> = ({ index, description }) => {
         <motion.div
           className={styles.content}
           initial={initial}
-          transition={{ delay: 0.5, duration: 0.6 }}
+          transition={{ delay: 0.3, duration: 0.6 }}
           animate={animation}
         >
           <div className={styles.title}>{techStackListData[index].title}</div>
