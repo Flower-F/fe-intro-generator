@@ -24,7 +24,7 @@ import 'antd/dist/antd.css';
 import styles from './style.module.scss';
 
 initAuthClient({
-  appId: '620bb1365acd9f4c6204e3d5',
+  appId: '62110454c4fafbf8af15124a',
 });
 
 const { Header, Sider, Content } = Layout;
@@ -83,7 +83,7 @@ const MyLayout = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  return (
+  return login ? (
     <Router>
       <Layout>
         <Sider
@@ -121,12 +121,12 @@ const MyLayout = () => {
                 onClick={handleToggleCollapsed}
               />
             )}
-            {/* <img
+            <img
               src={photo}
               alt="我的头像"
               className={styles.avatar}
               onClick={handleLogout}
-            /> */}
+            />
           </Header>
           <Content className={styles.content}>
             <Routes>
@@ -137,6 +137,8 @@ const MyLayout = () => {
         </Layout>
       </Layout>
     </Router>
+  ) : (
+    <Login />
   );
 };
 

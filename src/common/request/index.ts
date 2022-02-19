@@ -65,4 +65,14 @@ axiosInstance.interceptors.response.use(
   },
 );
 
+axiosInstance.interceptors.request.use((config) => {
+  if (config.method === 'post') {
+    const { token } = window.localStorage;
+    if (token && config.headers) {
+      config.headers.token = token;
+    }
+  }
+  return config;
+});
+
 export { axiosInstance };
