@@ -7,8 +7,9 @@ interface ITechStackListProps {
 }
 
 const TechStackList: React.FC<ITechStackListProps> = ({ schema }) => {
-  const { attributes = { occupied: [] } } = schema;
-  const { occupied } = attributes;
+  const { attributes } = schema;
+  const { occupied = [] } = attributes;
+
   return (
     <section className="wrapper">
       <h3 className={styles.tech}>我的技术栈</h3>

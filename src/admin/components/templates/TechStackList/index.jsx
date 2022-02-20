@@ -7,6 +7,8 @@ const TechStackList = (props) => {
   const { attributes = {}, changeAttributes } = props;
   const { occupied = new Array(techStackListData.length).fill(0) } = attributes;
 
+  console.log(attributes);
+
   return (
     <div className={commonStyles.wrapper}>
       <div className={styles.row}>
