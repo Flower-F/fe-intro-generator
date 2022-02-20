@@ -53,7 +53,7 @@ const useLoading = () => {
 
 const MyLayout = () => {
   const handleHomePageRedirect = () => {
-    window.location.href = '/';
+    window.location.href = '/index.html';
   };
 
   const handleLogout = () => {
