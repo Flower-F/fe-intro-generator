@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, lazy, Suspense } from 'react';
 import { useDispatch } from 'react-redux';
 import HomeManagement from './containers/HomeManagement';
 import { Route, Routes, HashRouter as Router, NavLink } from 'react-router-dom';
@@ -10,7 +10,6 @@ import {
   MenuFoldOutlined,
   SearchOutlined,
 } from '@ant-design/icons';
-import SEOManagement from './containers/SEOManagement';
 import Login from './containers/Login';
 import { getChangeSchemaAction } from './store/actions';
 import { parseJsonByString } from '../common/utils';
@@ -20,6 +19,8 @@ import { axiosInstance } from '../common/request';
 import 'normalize.css';
 import 'antd/dist/antd.css';
 import styles from './style.module.scss';
+
+const SEOManagement = lazy(() => import('./containers/SEOManagement'));
 
 initAuthClient({
   appId: '62110454c4fafbf8af15124a',
@@ -153,7 +154,14 @@ const MyLayout = () => {
           <Content className={styles.content}>
             <Routes>
               <Route path="/" element={<HomeManagement />}></Route>
-              <Route path="/seo" element={<SEOManagement />}></Route>
+              <Route
+                path="/seo"
+                element={
+                  <Suspense fallback={<>loading...</>}>
+                    <SEOManagement />
+                  </Suspense>
+                }
+              ></Route>
             </Routes>
             {loading ? (
               <div className={styles.spin}>
