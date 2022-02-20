@@ -120,6 +120,7 @@ const SEOManagement = () => {
           onClick={handleResetButtonClick}
           className={styles.reset}
           loading={loadingReset}
+          disabled={loadingSave}
         >
           返回上次保存配置
         </Button>
