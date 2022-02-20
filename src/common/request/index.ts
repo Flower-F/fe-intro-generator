@@ -2,7 +2,7 @@ import axios, { AxiosRequestConfig } from 'axios';
 import qs from 'qs';
 import url from './url';
 
-// 配置 axios 拦截器，防止多次重复请求
+// 配置 axios 拦截器，防止多次重复请求以及进行 token 携带
 const axiosInstance = axios.create({
   baseURL: url,
   timeout: 600000,
@@ -20,7 +20,6 @@ function generateKey(config: AxiosRequestConfig) {
 // 添加请求
 function addRequest(config: AxiosRequestConfig) {
   const requestKey = generateKey(config);
-  // console.log(requestKey);
   config.cancelToken =
     config.cancelToken ||
     new axios.CancelToken((cancel) => {
@@ -65,14 +64,20 @@ axiosInstance.interceptors.response.use(
   },
 );
 
-axiosInstance.interceptors.request.use((config) => {
-  if (config.method === 'post') {
-    const { token } = window.localStorage;
-    if (token && config.headers) {
-      config.headers.token = token;
+// 配置 token 携带
+axiosInstance.interceptors.request.use(
+  (config) => {
+    if (config.method === 'post') {
+      const { token } = window.localStorage;
+      if (token && config.headers) {
+        config.headers.token = token;
+      }
     }
-  }
-  return config;
-});
+    return config;
+  },
+  (error) => {
+    return Promise.reject(error);
+  },
+);
 
 export { axiosInstance };

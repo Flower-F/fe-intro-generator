@@ -14,7 +14,7 @@ const Hero: React.FC<IHeroProps> = ({ schema }) => {
   return (
     <section className={styles.hero}>
       <video
-        src="https://images-1305624698.cos.ap-guangzhou.myqcloud.com/hero.mp4"
+        src="https://fe-intro-generator-1305624698.file.myqcloud.com/hero.mp4"
         autoPlay
         muted
         loop
