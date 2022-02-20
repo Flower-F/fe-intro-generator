@@ -16,6 +16,8 @@ import {
   SiNginx,
   SiDocker,
   SiGitee,
+  SiWebpack,
+  SiVite,
 } from 'react-icons/si';
 
 interface ITechStack {
@@ -74,6 +76,16 @@ export const techStackListData: ITechStack[] = [
     title: 'Tailwindcss',
     icon: <SiTailwindcss />,
     color: '#16b7b9',
+  },
+  {
+    title: 'Webpack',
+    icon: <SiWebpack />,
+    color: '#8fd6fa',
+  },
+  {
+    title: 'Vite',
+    icon: <SiVite />,
+    color: '#42b783',
   },
   {
     title: 'Node.js',
