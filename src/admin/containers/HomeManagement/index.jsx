@@ -78,33 +78,21 @@ const HomeManagement = () => {
     <>
       <AreaList />
       <div className={styles.buttons}>
-        {loadingSave ? (
-          <Button type="primary" loading>
-            保存区块配置
-          </Button>
-        ) : (
-          <Button type="primary" onClick={handleSaveButtonClick}>
-            保存区块配置
-          </Button>
-        )}
-        {loadingReset ? (
-          <Button
-            type="primary"
-            loading
-            onClick={handleResetButtonClick}
-            className={styles.reset}
-          >
-            返回上次保存配置
-          </Button>
-        ) : (
-          <Button
-            type="primary"
-            onClick={handleResetButtonClick}
-            className={styles.reset}
-          >
-            返回上次保存配置
-          </Button>
-        )}
+        <Button
+          type="primary"
+          onClick={handleSaveButtonClick}
+          loading={loadingSave}
+        >
+          保存区块配置
+        </Button>
+        <Button
+          type="primary"
+          onClick={handleResetButtonClick}
+          className={styles.reset}
+          loading={loadingReset}
+        >
+          返回上次保存配置
+        </Button>
       </div>
     </>
   );

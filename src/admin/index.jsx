@@ -68,6 +68,14 @@ const MyLayout = () => {
     window.location.reload();
   };
 
+  const getDefaultSelectedKeys = () => {
+    if (window.location.hash === '#/seo') {
+      return 'admin-seo';
+    } else {
+      return 'admin-home';
+    }
+  };
+
   const { collapsed, handleToggleCollapsed } = useCollapsed();
   const { changeSchema } = useStore();
   const { loading, setLoading } = useLoading();
@@ -103,11 +111,15 @@ const MyLayout = () => {
           collapsible
           collapsed={collapsed}
         >
-          <Menu theme="dark" mode="inline" defaultSelectedKeys={['admin-home']}>
+          <Menu
+            theme="dark"
+            mode="inline"
+            defaultSelectedKeys={getDefaultSelectedKeys()}
+          >
             <Menu.Item key="admin-home" icon={<SettingOutlined />}>
               <NavLink to="/">首页内容管理</NavLink>
             </Menu.Item>
-            <Menu.Item key="admin-setting" icon={<SearchOutlined />}>
+            <Menu.Item key="admin-seo" icon={<SearchOutlined />}>
               <NavLink to="/seo">SEO 优化</NavLink>
             </Menu.Item>
             <Menu.Item
@@ -146,7 +158,11 @@ const MyLayout = () => {
               <Route path="/" element={<HomeManagement />}></Route>
               <Route path="/seo" element={<SEOManagement />}></Route>
             </Routes>
-            <div className={styles.spin}>{loading ? <Spin /> : null}</div>
+            {loading ? (
+              <div className={styles.spin}>
+                <Spin />
+              </div>
+            ) : null}
           </Content>
         </Layout>
       </Layout>
