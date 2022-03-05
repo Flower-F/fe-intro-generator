@@ -3,6 +3,7 @@
 其中 Hero Section 的设计来源于 https://github.com/itSatoriCode/react-data-website
 
 [在线链接](https://fe-intro-generator-1305624698.file.myqcloud.com/index.html)
+体验账号：test，密码：123456
 
 [技术选型](https://github.com/Flower-F/fe-intro-generator/blob/master/docs/技术选型.md)
 

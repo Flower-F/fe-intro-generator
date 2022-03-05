@@ -34,7 +34,14 @@ const reducer = (state = defaultState, action) =>
         draft.schema.children.splice(action.index, 1);
         break;
       case CHANGE_PAGE_CHILD_POSITION:
-        // 这里不可以直接删除，要先拷贝一份数据，否则会出错
+        // immer 原理：
+        // https://juejin.cn/post/6926099651510665230
+
+        // original(draft) -> Proxy 类型
+        // const schema = original(draft);
+        // schema.children.splice(action.oldIndex, 1);
+
+        // 这里不可以直接删除，要先拷贝一份数据
         const copy = original(draft.schema.children);
         //  把这一项删除
         draft.schema.children.splice(action.oldIndex, 1);
