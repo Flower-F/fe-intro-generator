@@ -14,8 +14,6 @@ import { IFooterItem, IProjectItem } from '../../../common/types/schema';
 
 const { Option } = Select;
 
-const mapping = { Footer, Detail, Hero, TechStackList, ProjectList };
-
 interface AreaItemProps {
   value: number;
 }
@@ -71,14 +69,43 @@ const AreaItem: React.FC<AreaItemProps> = ({ value: index }) => {
 
   const getComponent = () => {
     const { name } = tempPageChild;
-    const Component = mapping[name];
-    return Component ? (
-      <Component
-        {...tempPageChild}
-        changeAttributes={changeTempPageChildAttributes}
-        changeChildren={changeTempPageChildren}
-      />
-    ) : null;
+
+    switch (name) {
+      case 'Footer':
+        return (
+          <Footer {...tempPageChild} changeChildren={changeTempPageChildren} />
+        );
+      case 'Detail':
+        return (
+          <Detail
+            {...tempPageChild}
+            changeAttributes={changeTempPageChildAttributes}
+          />
+        );
+      case 'Hero':
+        return (
+          <Hero
+            {...tempPageChild}
+            changeAttributes={changeTempPageChildAttributes}
+          />
+        );
+      case 'ProjectList':
+        return (
+          <ProjectList
+            {...tempPageChild}
+            changeChildren={changeTempPageChildren}
+          />
+        );
+      case 'TechStackList':
+        return (
+          <TechStackList
+            {...tempPageChild}
+            changeAttributes={changeTempPageChildAttributes}
+          />
+        );
+      default:
+        break;
+    }
   };
 
   return (
