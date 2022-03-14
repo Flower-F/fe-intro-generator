@@ -6,7 +6,7 @@ export const getLoginStatus = () => {
 
   let login = false;
 
-  if (token && currentTime <= expiredTime) {
+  if (token && expiredTime && currentTime <= expiredTime) {
     login = true;
   }
 

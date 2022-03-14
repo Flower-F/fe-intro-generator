@@ -27,11 +27,6 @@ const render = (index: number, schema: IAllSchema) => {
   }
 };
 
-const useLoading = () => {
-  const [loading, setLoading] = useState(true);
-  return { loading, setLoading };
-};
-
 const Home = () => {
   const [pageSchema, setPageSchema] = useState({
     attributes: { title: '', description: '' },
@@ -39,7 +34,7 @@ const Home = () => {
   });
   const { attributes, children } = pageSchema;
   const { title, description } = attributes;
-  const { loading, setLoading } = useLoading();
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     setLoading(true);
@@ -48,13 +43,10 @@ const Home = () => {
       .then((res) => {
         const data = res?.data;
         if (data) {
-          // console.log(data.schema);
           setPageSchema(parseJsonByString(data.schema));
         }
       })
-      .catch(() => {
-        // console.log('err', error);
-      })
+      .catch(() => {})
       .finally(() => {
         setLoading(false);
       });
@@ -91,7 +83,6 @@ const Home = () => {
           </div>
         </>
       ) : (
-        // children.map((item, index) => render(item.name, index,item))
         children.map((item: IAllSchema, index) => render(index, item))
       )}
     </>

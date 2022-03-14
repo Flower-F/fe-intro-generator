@@ -69,3 +69,13 @@ export type IAllSchema =
   | IHeroSchema
   | IDetailSchema
   | IFooterSchema;
+
+// Page
+export interface IPageSchema {
+  name: 'Page';
+  attributes: {
+    title: '';
+    description: '';
+  };
+  children: Array<IAllSchema>;
+}

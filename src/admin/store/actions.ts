@@ -1,3 +1,4 @@
+import { IAllSchema, IPageSchema } from '../../common/types/schema';
 import {
   ADD_PAGE_CHILDREN,
   CHANGE_PAGE_CHILD,
@@ -8,7 +9,7 @@ import {
 } from './constants';
 
 // 修改最外层 schema
-export const getChangeSchemaAction = (schema) => {
+export const getChangeSchemaAction = (schema: IPageSchema) => {
   return {
     type: CHANGE_SCHEMA,
     value: schema,
@@ -24,7 +25,7 @@ export const getAddPageChildrenAction = () => {
 };
 
 // 修改页面第一层的子节点
-export const getChangePageChildAction = (index, value) => {
+export const getChangePageChildAction = (index: number, value: IAllSchema) => {
   return {
     type: CHANGE_PAGE_CHILD,
     value,
@@ -33,7 +34,7 @@ export const getChangePageChildAction = (index, value) => {
 };
 
 // 删除最外层 schema 的子节点
-export const getDeletePageChildAction = (index) => {
+export const getDeletePageChildAction = (index: number) => {
   return {
     type: DELETE_PAGE_CHILD,
     index,
@@ -41,7 +42,10 @@ export const getDeletePageChildAction = (index) => {
 };
 
 // 拖拽排序
-export const getChangePageChildPositionAction = (oldIndex, newIndex) => {
+export const getChangePageChildPositionAction = (
+  oldIndex: number,
+  newIndex: number,
+) => {
   return {
     type: CHANGE_PAGE_CHILD_POSITION,
     oldIndex,
@@ -50,7 +54,10 @@ export const getChangePageChildPositionAction = (oldIndex, newIndex) => {
 };
 
 // 修改最外层 schema 的 seo 属性
-export const getChangePageAttributeAction = (key, value) => {
+export const getChangePageAttributeAction = (
+  key: 'title' | 'description',
+  value: string,
+) => {
   return {
     type: CHANGE_PAGE_ATTRIBUTE,
     key,

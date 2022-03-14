@@ -1,4 +1,6 @@
 import { produce, original } from 'immer';
+import { AnyAction } from 'redux';
+import { IAllSchema, IPageSchema } from '../../common/types/schema';
 import {
   CHANGE_SCHEMA,
   ADD_PAGE_CHILDREN,
@@ -11,24 +13,28 @@ import {
 const initialSchema = {
   name: 'Page',
   attributes: {},
-  children: [],
+  children: new Array<IAllSchema>(),
 };
 
 const defaultState = {
   schema: initialSchema,
 };
 
-const reducer = (state = defaultState, action) =>
+const reducer = (state = defaultState, action: AnyAction) =>
   produce(state, (draft) => {
     switch (action.type) {
       case CHANGE_SCHEMA:
-        draft.schema = action.value;
+        draft.schema = action.value as IPageSchema;
         break;
       case ADD_PAGE_CHILDREN:
         draft.schema.children.push(action.value);
         break;
       case CHANGE_PAGE_CHILD:
-        draft.schema.children.splice(action.index, 1, action.value);
+        draft.schema.children.splice(
+          action.index,
+          1,
+          action.value as IAllSchema,
+        );
         break;
       case DELETE_PAGE_CHILD:
         draft.schema.children.splice(action.index, 1);
@@ -42,11 +48,16 @@ const reducer = (state = defaultState, action) =>
         // schema.children.splice(action.oldIndex, 1);
 
         // 这里不可以直接删除，要先拷贝一份数据
-        const copy = original(draft.schema.children);
+        const copy = original(draft.schema.children as IAllSchema[]);
         //  把这一项删除
         draft.schema.children.splice(action.oldIndex, 1);
         // 把删掉的加回去
-        draft.schema.children.splice(action.newIndex, 0, copy[action.oldIndex]);
+        copy &&
+          draft.schema.children.splice(
+            action.newIndex,
+            0,
+            copy[action.oldIndex],
+          );
         break;
       case CHANGE_PAGE_ATTRIBUTE:
         if (
@@ -54,6 +65,7 @@ const reducer = (state = defaultState, action) =>
           action.key !== null &&
           action.key !== ''
         ) {
+          // @ts-ignore
           draft.schema.attributes[action.key] = action.value;
         }
         break;
