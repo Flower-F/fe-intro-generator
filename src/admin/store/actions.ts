@@ -53,9 +53,11 @@ export const getChangePageChildPositionAction = (
   };
 };
 
+export type IPageAttributeKey = 'title' | 'description';
+
 // 修改最外层 schema 的 seo 属性
 export const getChangePageAttributeAction = (
-  key: 'title' | 'description',
+  key: IPageAttributeKey,
   value: string,
 ) => {
   return {

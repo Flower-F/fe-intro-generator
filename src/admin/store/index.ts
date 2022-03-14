@@ -1,5 +1,9 @@
 import { createStore, combineReducers, compose } from 'redux';
-import adminReducer from './reducers';
+import { reducer as adminReducer, IPageSchemaState } from './reducers';
+
+export interface RootState {
+  admin: IPageSchemaState;
+}
 
 const reducer = combineReducers({
   admin: adminReducer,

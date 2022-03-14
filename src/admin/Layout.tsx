@@ -1,5 +1,4 @@
 import { useState, useEffect, lazy, Suspense } from 'react';
-import { useDispatch } from 'react-redux';
 import HomeManagement from './containers/HomeManagement';
 import { Route, Routes, HashRouter as Router, NavLink } from 'react-router-dom';
 import { Layout, Menu, Tooltip, Spin } from 'antd';
@@ -11,7 +10,6 @@ import {
   SearchOutlined,
 } from '@ant-design/icons';
 import Login from './containers/Login';
-import { getChangeSchemaAction } from './store/actions';
 import { parseJsonByString } from '../common/utils';
 import { initAuthClient, getAuthClient } from '@authing/react-ui-components';
 import { getLoginStatus } from './utils/login';
@@ -19,7 +17,7 @@ import { axiosInstance } from '../common/request';
 import 'normalize.css';
 import 'antd/dist/antd.css';
 import styles from './style.module.scss';
-import { IPageSchema } from '../common/types/schema';
+import useStore from './hooks/useStore';
 
 const SEOManagement = lazy(() => import('./containers/SEOManagement'));
 
@@ -28,14 +26,6 @@ initAuthClient({
 });
 
 const { Header, Sider, Content } = Layout;
-
-const useStore = () => {
-  const dispatch = useDispatch();
-  const changeSchema = (schema: IPageSchema) => {
-    dispatch(getChangeSchemaAction(schema));
-  };
-  return { changeSchema };
-};
 
 const useCollapsed = () => {
   const [collapsed, setCollapsed] = useState(true);

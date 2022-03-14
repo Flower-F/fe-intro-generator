@@ -10,7 +10,7 @@ export interface IDetailSchema {
 }
 
 // Footer
-interface IFooterItem {
+export interface IFooterItem {
   name: 'FooterItem';
   attributes: {
     link: string;
@@ -37,7 +37,7 @@ export interface IHeroSchema {
 }
 
 // ProjectList
-interface IProjectItem {
+export interface IProjectItem {
   name: 'ProjectItem';
   attributes: {
     link: string;

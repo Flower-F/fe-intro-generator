@@ -1,6 +1,7 @@
 import { produce, original } from 'immer';
 import { AnyAction } from 'redux';
 import { IAllSchema, IPageSchema } from '../../common/types/schema';
+import { IPageAttributeKey } from './actions';
 import {
   CHANGE_SCHEMA,
   ADD_PAGE_CHILDREN,
@@ -12,16 +13,30 @@ import {
 
 const initialSchema = {
   name: 'Page',
-  attributes: {},
+  attributes: {
+    description: '',
+    title: '',
+  },
   children: new Array<IAllSchema>(),
 };
+
+export interface IPageSchemaState {
+  schema: {
+    name: string;
+    attributes: {
+      description: string;
+      title: string;
+    };
+    children: IAllSchema[];
+  };
+}
 
 const defaultState = {
   schema: initialSchema,
 };
 
-const reducer = (state = defaultState, action: AnyAction) =>
-  produce(state, (draft) => {
+export const reducer = (state = defaultState, action: AnyAction) =>
+  produce(state, (draft: { schema: IPageSchema }) => {
     switch (action.type) {
       case CHANGE_SCHEMA:
         draft.schema = action.value as IPageSchema;
@@ -65,13 +80,11 @@ const reducer = (state = defaultState, action: AnyAction) =>
           action.key !== null &&
           action.key !== ''
         ) {
-          // @ts-ignore
-          draft.schema.attributes[action.key] = action.value;
+          draft.schema.attributes[action.key as IPageAttributeKey] =
+            action.value;
         }
         break;
       default:
         break;
     }
   });
-
-export default reducer;
