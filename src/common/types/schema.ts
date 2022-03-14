@@ -1,6 +1,6 @@
 // Detail
 export interface IDetailSchema {
-  name: '';
+  name: 'Detail';
   attributes: {
     index: number;
     description: string;
@@ -11,7 +11,7 @@ export interface IDetailSchema {
 
 // Footer
 interface IFooterItem {
-  name: '';
+  name: 'FooterItem';
   attributes: {
     link: string;
     title: string;
@@ -20,14 +20,14 @@ interface IFooterItem {
 }
 
 export interface IFooterSchema {
-  name: '';
+  name: 'Footer';
   attributes: {};
   children: Array<IFooterItem>;
 }
 
 // Hero
 export interface IHeroSchema {
-  name: '';
+  name: 'Hero';
   attributes: {
     nickName: string;
     title: string;
@@ -38,7 +38,7 @@ export interface IHeroSchema {
 
 // ProjectList
 interface IProjectItem {
-  name: '';
+  name: 'ProjectItem';
   attributes: {
     link: string;
     title: string;
@@ -48,16 +48,24 @@ interface IProjectItem {
 }
 
 export interface IProjectListSchema {
-  name: '';
+  name: 'ProjectList';
   attributes: {};
   children: Array<IProjectItem>;
 }
 
 // TechStackList
 export interface ITechStackListSchema {
-  name: '';
+  name: 'TechStackList';
   attributes: {
     occupied: Array<number>;
   };
   children: [];
 }
+
+// All
+export type IAllSchema =
+  | ITechStackListSchema
+  | IProjectListSchema
+  | IHeroSchema
+  | IDetailSchema
+  | IFooterSchema;

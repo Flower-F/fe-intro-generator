@@ -1,6 +1,6 @@
 # 前端程序员个人介绍页生成器
 
-其中 Hero Section 的设计来源于 https://github.com/itSatoriCode/react-data-website
+3.14 看了一些设计作品，觉得前台太丑了，准备重写前台所有组件样式。重写之前准备完全使用 TypeScript 重构前台与后台。
 
 [在线链接](https://fe-intro-generator-1305624698.file.myqcloud.com/index.html)
 体验账号：test，密码：123456

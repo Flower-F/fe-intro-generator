@@ -1,4 +1,4 @@
-export const parseJsonByString = (str: string, defaultValue: any) => {
+export const parseJsonByString = (str: string, defaultValue?: any) => {
   let returnValue = defaultValue;
   try {
     returnValue = JSON.parse(str);

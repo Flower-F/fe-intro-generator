@@ -1,13 +1,30 @@
 import { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet';
-import { Skeleton, Spin } from 'antd';
+import { Skeleton } from 'antd';
 import { parseJsonByString } from '../../../common/utils';
-import { mapping } from './mapping';
 import { axiosInstance } from '../../../common/request';
+import Footer from '../../components/Footer';
+import ProjectList from '../../components/ProjectList';
+import Detail from '../../components/Detail';
+import TechStackList from '../../components/TechStackList';
+import Hero from '../../components/Hero';
+import { IAllSchema } from '../../../common/types/schema';
 
-const render = (item, index) => {
-  const Component = mapping[item.name];
-  return Component ? <Component key={index} schema={item} /> : null;
+const render = (index: number, schema: IAllSchema) => {
+  switch (schema.name) {
+    case 'Footer':
+      return <Footer key={index} schema={schema} />;
+    case 'Detail':
+      return <Detail key={index} schema={schema} />;
+    case 'Hero':
+      return <Hero key={index} schema={schema} />;
+    case 'ProjectList':
+      return <ProjectList key={index} schema={schema} />;
+    case 'TechStackList':
+      return <TechStackList key={index} schema={schema} />;
+    default:
+      break;
+  }
 };
 
 const useLoading = () => {
@@ -17,11 +34,11 @@ const useLoading = () => {
 
 const Home = () => {
   const [pageSchema, setPageSchema] = useState({
-    attributes: {},
+    attributes: { title: '', description: '' },
     children: [],
   });
   const { attributes, children } = pageSchema;
-  const { title = '', description = '' } = attributes;
+  const { title, description } = attributes;
   const { loading, setLoading } = useLoading();
 
   useEffect(() => {
@@ -41,6 +58,7 @@ const Home = () => {
       .finally(() => {
         setLoading(false);
       });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
@@ -73,7 +91,8 @@ const Home = () => {
           </div>
         </>
       ) : (
-        children.map((item, index) => render(item, index))
+        // children.map((item, index) => render(item.name, index,item))
+        children.map((item: IAllSchema, index) => render(index, item))
       )}
     </>
   );
