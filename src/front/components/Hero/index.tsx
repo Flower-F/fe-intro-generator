@@ -7,13 +7,13 @@ interface IHeroProps {
 }
 
 const Hero: React.FC<IHeroProps> = ({ schema }) => {
-  // const { title, description, nickName } = data;
   const { attributes = { nickName: '', title: '', description: '' } } = schema;
   const { nickName, title, description } = attributes;
 
   return (
-    <section className={styles.hero}>
-      <video
+    <section className="text-3xl font-bold underline">
+      hello world
+      {/* <video
         src="https://fe-intro-generator-1305624698.file.myqcloud.com/hero.mp4"
         autoPlay
         muted
@@ -32,7 +32,7 @@ const Hero: React.FC<IHeroProps> = ({ schema }) => {
             参观后台
           </button>
         </div>
-      </div>
+      </div> */}
     </section>
   );
 };
