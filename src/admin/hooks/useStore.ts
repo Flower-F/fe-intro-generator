@@ -14,32 +14,37 @@ import {
 const useStore = (index = 0) => {
   const dispatch = useDispatch();
   const schema = useSelector((state: RootState) => state.admin.schema);
+
+  // 修改页面级别 schema
   const changeSchema = (schema: IPageSchema) => {
     dispatch(getChangeSchemaAction(schema));
   };
+  // 修改页面 attributes
   const changePageAttribute = (key: IPageAttributeKey, value: string) => {
     dispatch(getChangePageAttributeAction(key, value));
   };
-
+  // 获取二级 schema
   const children = useSelector(
     (state: RootState) => state.admin.schema?.children || [],
   );
+  // 为一级 schema 添加二级 schema
   const addPageChildren = () => {
     dispatch(getAddPageChildrenAction());
   };
 
+  // 获取具体的二级 schema
   const pageChild = useSelector(
     (state: RootState) => state.admin.schema?.children?.[index] || {},
   );
-
+  // 修改二级 schema
   const changePageChild = (schema: IAllSchema) => {
     dispatch(getChangePageChildAction(index, schema));
   };
-
+  // 移除二级 schema
   const removePageChild = () => {
     dispatch(getDeletePageChildAction(index));
   };
-
+  // 拖拽排序
   const onSortEnd = ({
     oldIndex,
     newIndex,
