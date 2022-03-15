@@ -2,15 +2,14 @@
   "name": "Page",
   "attributes": {
     "title": "FE Intro Generator",
-    "description": ""
+    "description": "一款前端程序员个人介绍页生成器"
   },
   "children": [
     {
       "name": "Hero",
       "attributes": {
-        "nickName": "Flower-F",
         "title": "FE Intro Generator",
-        "description": "一款前端程序员的个人介绍页面生成器"
+        "description": "一款前端程序员个人介绍页生成器"
       },
       "children": []
     },
@@ -21,20 +20,22 @@
           1,
           1,
           1,
+          0,
           1,
+          0,
+          0,
           1,
+          0,
+          0,
           1,
-          1,
-          1,
-          1,
-          1,
-          1,
-          1,
-          1,
-          1,
-          1,
-          1,
-          1
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
         ]
       },
       "children": []
@@ -42,18 +43,24 @@
     {
       "name": "Detail",
       "attributes": {
-        "index": 1,
-        "reverse": false,
-        "description": "掌握 CSS 基本语法，以及常见的布局类型，如 flex 布局、gird 布局、瀑布流布局等，了解常见的响应式布局方法。"
+        "index": 2,
+        "description": "熟悉 JavaScript 语法，包括 ES6+ 内容。"
       },
       "children": []
     },
     {
       "name": "Detail",
       "attributes": {
-        "index": 1,
-        "reverse": true,
-        "description": "掌握 js 常见知识，包括 ES6+ 语法，如 Map、Set、Promise、async & await 等。"
+        "index": 10,
+        "description": "熟悉 Webpack 配置，可以使用 webpack 配置 React 开发环境，了解基本的开发和打包优化。"
+      },
+      "children": []
+    },
+    {
+      "name": "Detail",
+      "attributes": {
+        "index": 4,
+        "description": "熟悉 React 全家桶的使用，包括 redux、react-router，了解 React 的核心原理"
       },
       "children": []
     },
@@ -64,9 +71,36 @@
         {
           "name": "ProjectItem",
           "attributes": {
+            "title": "Bullet Chat Everywhere",
             "link": "https://github.com/Flower-F/bullet-chat-everywhere",
-            "title": "处处弹幕",
-            "description": "处处弹幕是一款便捷式弹幕插件。可以嵌入网站使用，也可以作为浏览器插件使用，还可以选择根据源码的弹幕类进行拓展，打造属于自己的弹幕系统。"
+            "description": "处处弹幕是一款便捷的弹幕插件，可以嵌入网站使用，也可以作为浏览器插件使用，还可以选择根据源码的弹幕类进行拓展，打造属于自己的弹幕系统。"
+          },
+          "children": []
+        },
+        {
+          "name": "ProjectItem",
+          "attributes": {
+            "title": "FE Intro Generator",
+            "link": "https://github.com/Flower-F/fe-intro-generator",
+            "description": "这是一款前端程序员个人介绍页的生成器，可以通过后台配置零代码生成个人的介绍主页。"
+          },
+          "children": []
+        },
+        {
+          "name": "ProjectItem",
+          "attributes": {
+            "title": "Webpack Learning",
+            "link": "https://github.com/Flower-F/webpack-learning",
+            "description": "包含了我的 Webpack 学习经历。"
+          },
+          "children": []
+        },
+        {
+          "name": "ProjectItem",
+          "attributes": {
+            "title": "React Common Setting",
+            "link": "https://github.com/Flower-F/react-common-setttings",
+            "description": "讲述了如何从零使用 create-react-app 搭建前端开发环境，是我的 React 开发模板。"
           },
           "children": []
         }
@@ -79,8 +113,16 @@
         {
           "name": "FooterItem",
           "attributes": {
-            "title": "123123",
-            "link": "http://localhost:3000/admin.html"
+            "title": "我的博客",
+            "link": "https://flower-f.github.io"
+          },
+          "children": []
+        },
+        {
+          "name": "FooterItem",
+          "attributes": {
+            "title": "我的 github",
+            "link": "https://github.com/Flower-F"
           },
           "children": []
         }
