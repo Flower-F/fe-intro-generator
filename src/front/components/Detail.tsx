@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
 import { techStackListData } from '../../common/data/TechStackListData';
-
-// import styles from './style.module.scss';
 import { IDetailSchema } from '../../common/types/schema';
 
 interface IDetailProps {
@@ -24,8 +22,7 @@ const Detail: React.FC<IDetailProps> = ({ schema }) => {
       <div
         className={`three-d cursor-pointer
       ${active && 'active'}`}
-        onMouseEnter={() => setActive(!active)}
-        onMouseLeave={() => setActive(!active)}
+        onClick={() => setActive(!active)}
       >
         <div
           className={`origin-center transition

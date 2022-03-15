@@ -1,7 +1,6 @@
 import React from 'react';
 import { IProjectListSchema } from '../../common/types/schema';
 import ProjectItem from './ProjectItem';
-// import styles from './style.module.scss';
 
 interface IProjectProps {
   schema: IProjectListSchema;
