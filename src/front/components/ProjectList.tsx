@@ -12,7 +12,7 @@ const ProjectList: React.FC<IProjectProps> = ({ schema }) => {
   return (
     <section>
       <h3
-        className="text-3xl font-bold text-center
+        className="text-4xl font-bold text-center
       mb-4"
       >
         项目经历

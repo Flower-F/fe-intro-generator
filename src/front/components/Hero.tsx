@@ -12,7 +12,7 @@ const Hero: React.FC<IHeroProps> = ({ schema }) => {
   return (
     <section
       className="flex flex-col items-center
-     justify-center text-center"
+     justify-center text-center min-h-screen"
     >
       <>
         <h1
@@ -28,14 +28,17 @@ const Hero: React.FC<IHeroProps> = ({ schema }) => {
           {description}
         </p>
 
-        <button
+        <a
           className="mt-4 px-6 py-3 rounded-lg 
           cursor-pointer text-xl text-[#444]
           shadow-normal hover:shadow-hover hidden xl:inline-block
           hover:text-[#27ae60]"
+          href="https://fe-intro-generator-1305624698.file.myqcloud.com/admin.html"
+          target="_blank"
+          rel="noreferrer"
         >
           参观后台
-        </button>
+        </a>
 
         {/* <a
           href="https://github.com/Flower-F/fe-intro-generator"

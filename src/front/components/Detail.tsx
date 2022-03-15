@@ -13,7 +13,7 @@ const Detail: React.FC<IDetailProps> = ({ schema }) => {
 
   return (
     <section
-      className={`w-full bg-black`}
+      className={`w-full bg-black min-h-screen`}
       style={{
         transformStyle: 'preserve-3d',
         background: `${techStackListData[index].color}`,
