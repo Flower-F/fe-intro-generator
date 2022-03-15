@@ -1,6 +1,6 @@
 import React from 'react';
 // import { SiGithub } from 'react-icons/si';
-import { IHeroSchema } from '../../../common/types/schema';
+import { IHeroSchema } from '../../common/types/schema';
 
 interface IHeroProps {
   schema: IHeroSchema;

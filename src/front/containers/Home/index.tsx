@@ -18,8 +18,8 @@ const render = (index: number, schema: IAllSchema) => {
       return <Detail key={index} schema={schema} />;
     case 'Hero':
       return <Hero key={index} schema={schema} />;
-    // case 'ProjectList':
-    //   return <ProjectList key={index} schema={schema} />;
+    case 'ProjectList':
+      return <ProjectList key={index} schema={schema} />;
     // case 'TechStackList':
     //   return <TechStackList key={index} schema={schema} />;
     default:

@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { techStackListData } from '../../../common/data/TechStackListData';
+import { techStackListData } from '../../common/data/TechStackListData';
 
 // import styles from './style.module.scss';
-import { IDetailSchema } from '../../../common/types/schema';
+import { IDetailSchema } from '../../common/types/schema';
 
 interface IDetailProps {
   schema: IDetailSchema;
