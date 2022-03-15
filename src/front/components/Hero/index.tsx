@@ -1,6 +1,6 @@
 import React from 'react';
+// import { SiGithub } from 'react-icons/si';
 import { IHeroSchema } from '../../../common/types/schema';
-import styles from './style.module.scss';
 
 interface IHeroProps {
   schema: IHeroSchema;
@@ -8,31 +8,50 @@ interface IHeroProps {
 
 const Hero: React.FC<IHeroProps> = ({ schema }) => {
   const { attributes = { nickName: '', title: '', description: '' } } = schema;
-  const { nickName, title, description } = attributes;
+  const { title, description } = attributes;
 
   return (
-    <section className="text-3xl font-bold underline">
-      hello world
-      {/* <video
-        src="https://fe-intro-generator-1305624698.file.myqcloud.com/hero.mp4"
-        autoPlay
-        muted
-        loop
-        className={styles.video}
-      ></video>
-      <div className={styles.nickName}>{nickName}</div>
-      <div className={styles.content}>
-        <h1 className={styles.title}>{title}</h1>
-        <p className={styles.description}>{description}</p>
-        <div className={styles.buttonWrapper}>
-          <button
-            className={styles.backend}
-            onClick={() => (window.location.pathname = '/admin.html')}
-          >
-            参观后台
-          </button>
-        </div>
-      </div> */}
+    <section
+      className="flex flex-col items-center
+     justify-center text-center"
+    >
+      <>
+        <h1
+          className="text-6xl leading-none text-[#444] 
+          font-semibold"
+        >
+          {title}
+        </h1>
+        <p
+          className="text-2xl pb-2 text-[#27ae60] leading-snug
+        mt-4"
+        >
+          {description}
+        </p>
+
+        <button
+          className="mt-4 px-6 py-3 rounded-lg 
+          cursor-pointer text-xl text-[#444]
+          shadow-normal hover:shadow-hover hidden xl:inline-block
+          hover:text-[#27ae60]"
+        >
+          参观后台
+        </button>
+
+        {/* <a
+          href="https://github.com/Flower-F/fe-intro-generator"
+          target="_blank"
+          rel="noreferrer"
+          title={nickName}
+          className="inline-flex text-xl items-center
+          px-6 py-3 text-black bg-transparent 
+          rounded-full mt-8 border-2 hover:text-[#27ae60]
+          border-[#27ae60] transition"
+        >
+          <SiGithub className="mr-2" />
+          Github
+        </a> */}
+      </>
     </section>
   );
 };

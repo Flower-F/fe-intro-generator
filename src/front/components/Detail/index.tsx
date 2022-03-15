@@ -1,9 +1,7 @@
-import React, { useEffect } from 'react';
-import { motion, useAnimation } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
+import React, { useState } from 'react';
 import { techStackListData } from '../../../common/data/TechStackListData';
 
-import styles from './style.module.scss';
+// import styles from './style.module.scss';
 import { IDetailSchema } from '../../../common/types/schema';
 
 interface IDetailProps {
@@ -11,58 +9,44 @@ interface IDetailProps {
 }
 
 const Detail: React.FC<IDetailProps> = ({ schema }) => {
-  const { attributes = { index: 0, description: '', reverse: false } } = schema;
-  const { index, description, reverse } = attributes;
-
-  const initial = { opacity: 0, y: 30 };
-  const animation = useAnimation();
-
-  const { ref, inView } = useInView({ threshold: 0.2 });
-
-  useEffect(() => {
-    if (inView) {
-      animation.start({
-        opacity: 1,
-        y: 0,
-      });
-    }
-  }, [inView, animation]);
+  const [active, setActive] = useState(true);
+  const { attributes } = schema;
+  const { index = 0, description = '' } = attributes;
 
   return (
     <section
-      ref={ref}
-      className={`wrapper ${styles.wrapper} ${
-        reverse ? `${styles.inverse}` : `${styles.reverse}`
-      }`}
+      className={`w-full bg-black`}
+      style={{
+        transformStyle: 'preserve-3d',
+        background: `${techStackListData[index].color}`,
+      }}
     >
-      {
-        <motion.div
-          initial={initial}
-          transition={{ delay: 0.3, duration: 0.6 }}
-          animate={animation}
-          className={styles.img}
+      <div
+        className={`three-d cursor-pointer
+      ${active && 'active'}`}
+        onMouseEnter={() => setActive(!active)}
+        onMouseLeave={() => setActive(!active)}
+      >
+        <div
+          className={`origin-center transition
+        ${active && 'main-active'}`}
         >
           <div
-            className={styles.icon}
-            style={{
-              color: techStackListData[index].color,
-            }}
+            className="flex min-h-screen flex-col
+          items-center justify-center text-base text-white
+          px-12 sm:px-20 sm:text-xl md:text-2xl md:px-32 xl:px-52"
           >
-            {techStackListData[index].icon}
+            <div
+              className="text-[6rem] md:text-[10rem]
+            pb-4"
+              style={{ color: `${techStackListData[index].color}` }}
+            >
+              {techStackListData[index].icon}
+            </div>
+            <div>{description}</div>
           </div>
-        </motion.div>
-      }
-      {
-        <motion.div
-          className={styles.content}
-          initial={initial}
-          transition={{ delay: 0.3, duration: 0.6 }}
-          animate={animation}
-        >
-          <div className={styles.title}>{techStackListData[index].title}</div>
-          <div className={styles.description}>{description}</div>
-        </motion.div>
-      }
+        </div>
+      </div>
     </section>
   );
 };

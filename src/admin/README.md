@@ -1,6 +1,6 @@
 # 后台界面
 
-目前 AreaItem 组件中还存在 3 处地方的类型问题还未解决，需要补充相关的知识：
+目前后台中还存在 3 处地方的类型问题还未解决，需要补充相关的知识：
 
 ```ts
 const handleSelectorChange = (value: any) => {
