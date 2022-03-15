@@ -1,4 +1,4 @@
-import { Input, Select, Switch } from 'antd';
+import { Input, Select } from 'antd';
 import { techStackListData } from '../../../../common/data/TechStackListData';
 import commonStyles from '../common.module.scss';
 import styles from './style.module.scss';
@@ -10,21 +10,18 @@ interface IDetailProps {
   changeAttributes: ({
     index,
     description,
-    reverse,
   }: {
     index?: string;
     description?: string;
-    reverse?: boolean;
   }) => void;
   attributes: {
     index: number;
-    reverse: boolean;
     description: string;
   };
 }
 
 const Detail: React.FC<IDetailProps> = ({ changeAttributes, attributes }) => {
-  const { index = 0, reverse = false, description = '' } = attributes;
+  const { index = 0, description = '' } = attributes;
 
   return index < techStackListData.length ? (
     <div className={commonStyles.wrapper}>
@@ -50,17 +47,6 @@ const Detail: React.FC<IDetailProps> = ({ changeAttributes, attributes }) => {
           value={description}
           onChange={(e) => changeAttributes({ description: e.target.value })}
           style={{ marginLeft: 10 }}
-        />
-      </div>
-      <div className={styles.row}>
-        <span className={styles.label}>图片在左</span>
-        <Switch
-          checked={reverse}
-          onChange={(checked) => {
-            changeAttributes({
-              reverse: checked,
-            });
-          }}
         />
       </div>
     </div>

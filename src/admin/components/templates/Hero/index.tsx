@@ -4,7 +4,6 @@ import styles from './style.module.scss';
 
 interface IHeroProps {
   attributes: {
-    nickName: string;
     title: string;
     description: string;
   };
@@ -20,19 +19,10 @@ interface IHeroProps {
 }
 
 const Hero: React.FC<IHeroProps> = ({ attributes, changeAttributes }) => {
-  const { nickName = '', title = '', description = '' } = attributes;
+  const { title = '', description = '' } = attributes;
 
   return (
     <div className={commonStyles.wrapper}>
-      <div className={styles.row}>
-        <span className={styles.label}>昵称</span>
-        <Input
-          className={styles.content}
-          placeholder="请输入您的昵称"
-          value={nickName}
-          onChange={(e) => changeAttributes({ nickName: e.target.value })}
-        />
-      </div>
       <div className={styles.row}>
         <span className={styles.label}>标题</span>
         <Input
