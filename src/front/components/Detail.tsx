@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { Progress } from 'antd';
 import { techStackListData } from '../../common/data/TechStackListData';
 import { IDetailSchema } from '../../common/types/schema';
 
@@ -7,43 +8,46 @@ interface IDetailProps {
 }
 
 const Detail: React.FC<IDetailProps> = ({ schema }) => {
-  const [active, setActive] = useState(true);
   const { attributes } = schema;
-  const { index = 0, description = '' } = attributes;
+  const { index = 0, description = '', percent = 0 } = attributes;
+  const { icon, color } = techStackListData[index];
 
   return (
     <section
-      className={`w-full bg-black min-h-screen`}
-      style={{
-        transformStyle: 'preserve-3d',
-        background: `${techStackListData[index].color}`,
-      }}
+      className="relative inline-flex items-center justify-center w-full min-h-screen
+        duration-300 ease-out rounded shadow-md group
+        cursor-pointer overflow-hidden"
+      // style={{ border: `2px solid ${color}` }}
     >
-      <div
-        className={`three-d cursor-pointer
-      ${active && 'active'}`}
-        onClick={() => setActive(!active)}
+      <span
+        className="absolute inset-0 flex flex-col items-center justify-center 
+        w-full h-full text-white duration-300 -translate-x-full
+        group-hover:translate-x-0 ease sm:flex-row"
       >
-        <div
-          className={`transition
-        ${active && 'main-active'}`}
+        <Progress
+          percent={percent}
+          format={(percent) => `${percent}%`}
+          type="circle"
+          strokeColor={color}
+          style={{ color: 'white' }}
+          width={160}
+        />
+        <p
+          className="text-black text-xl max-w-[200px] mt-4
+        sm:ml-6 sm:max-w-[300px] sm:mt-0"
         >
-          <div
-            className="flex min-h-screen flex-col
-          items-center justify-center text-base text-white
-          px-12 sm:px-20 sm:text-xl md:text-2xl md:px-32 xl:px-52"
-          >
-            <div
-              className="text-[6rem] md:text-[10rem]
-            pb-4"
-              style={{ color: `${techStackListData[index].color}` }}
-            >
-              {techStackListData[index].icon}
-            </div>
-            <div className="text-lg">{description}</div>
-          </div>
-        </div>
-      </div>
+          {description}
+        </p>
+      </span>
+      <span
+        className="absolute flex items-center justify-center
+         w-full h-full transition-all duration-300 text-[15rem]
+         transform group-hover:translate-x-full ease rounded"
+        style={{ color: `${color}` }}
+      >
+        {icon}
+      </span>
+      <span className="relative invisible"></span>
     </section>
   );
 };
