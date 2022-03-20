@@ -38,7 +38,7 @@ const TechStackList: React.FC<ITechStackListProps> = ({ schema }) => {
         className="grid gap-8"
         style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(16rem, 1fr))' }}
         initial={initial}
-        transition={{ delay: 0, duration: 0.5 }}
+        transition={{ delay: 0.1, duration: 0.6 }}
         animate={animation}
       >
         {techStackListData.map((item, index) =>

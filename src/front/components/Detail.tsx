@@ -41,7 +41,7 @@ const Detail: React.FC<IDetailProps> = ({ schema }) => {
       </span>
       <span
         className="absolute flex items-center justify-center
-         w-full h-full transition-all duration-300 text-[15rem]
+         w-full h-full transition-all duration-300 text-[14rem]
          transform group-hover:translate-x-full ease rounded"
         style={{ color: `${color}` }}
       >
