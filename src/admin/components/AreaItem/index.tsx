@@ -7,8 +7,13 @@ import Detail from '../../templates/Detail';
 import Hero from '../../templates/Hero';
 import TechStackList from '../../templates/TechStackList';
 import ProjectList from '../../templates/ProjectList';
+import Form from '../../templates/Form';
 import useStore from '../../hooks/useStore';
-import { IFooterItem, IProjectItem } from '../../../common/types/schema';
+import {
+  IFooterItem,
+  IFormItem,
+  IProjectItem,
+} from '../../../common/types/schema';
 import styles from './style.module.scss';
 
 const { Option } = Select;
@@ -62,7 +67,7 @@ const AreaItem: React.FC<AreaItemProps> = ({ value: index }) => {
   );
 
   const changeTempPageChildren = useCallback(
-    (children: [] | IProjectItem[] | IFooterItem[]) => {
+    (children: [] | IProjectItem[] | IFooterItem[] | IFormItem[]) => {
       const newTempChild = { ...tempPageChild };
       newTempChild.children = children;
       setTempPageChild(newTempChild);
@@ -106,6 +111,14 @@ const AreaItem: React.FC<AreaItemProps> = ({ value: index }) => {
             changeAttributes={changeTempPageChildAttributes}
           />
         );
+      case 'Form':
+        return (
+          <Form
+            {...tempPageChild}
+            changeChildren={changeTempPageChildren}
+            changeAttributes={changeTempPageChildAttributes}
+          />
+        );
       default:
         break;
     }
@@ -145,6 +158,7 @@ const AreaItem: React.FC<AreaItemProps> = ({ value: index }) => {
             <Option value="Footer">Footer 组件</Option>
             <Option value="TechStackList">TechStackList 组件</Option>
             <Option value="ProjectList">ProjectList 组件</Option>
+            <Option value="Form">Form 组件</Option>
           </Select>
           {getComponent()}
         </Modal>

@@ -62,13 +62,33 @@ export interface ITechStackListSchema {
   children: [];
 }
 
+// Form
+export interface IFormItem {
+  name: 'FormItem';
+  attributes: {
+    name: string;
+    key: string;
+    rows: string;
+  };
+  children: [];
+}
+
+export interface IFormSchema {
+  name: 'Form';
+  attributes: {
+    link: string;
+  };
+  children: Array<IFormItem>;
+}
+
 // All
 export type IAllSchema =
   | ITechStackListSchema
   | IProjectListSchema
   | IHeroSchema
   | IDetailSchema
-  | IFooterSchema;
+  | IFooterSchema
+  | IFormSchema;
 
 // Page
 export interface IPageSchema {
