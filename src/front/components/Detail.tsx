@@ -25,7 +25,7 @@ const Detail: React.FC<IDetailProps> = ({ schema }) => {
         onClick={() => setActive(!active)}
       >
         <div
-          className={`origin-center transition
+          className={`transition
         ${active && 'main-active'}`}
         >
           <div
@@ -40,7 +40,7 @@ const Detail: React.FC<IDetailProps> = ({ schema }) => {
             >
               {techStackListData[index].icon}
             </div>
-            <div>{description}</div>
+            <div className="text-lg">{description}</div>
           </div>
         </div>
       </div>

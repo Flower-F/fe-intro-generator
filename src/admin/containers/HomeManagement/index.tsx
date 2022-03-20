@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import { Button, Modal } from 'antd';
-import styles from './style.module.scss';
 import AreaList from '../../components/AreaList';
 import { parseJsonByString } from '../../../common/utils';
 import { axiosInstance } from '../../../common/request';
 import useStore from '../../hooks/useStore';
+import styles from './style.module.scss';
 
 const HomeManagement = () => {
   const { schema, changeSchema } = useStore();

@@ -1,7 +1,7 @@
 import { Input, Button } from 'antd';
+import { memo } from 'react';
 import { GiCancel } from 'react-icons/gi';
 import { IProjectItem } from '../../../../common/types/schema';
-
 import commonStyles from '../common.module.scss';
 import styles from './style.module.scss';
 
@@ -100,4 +100,4 @@ const ProjectList: React.FC<IProjectListProps> = ({
   );
 };
 
-export default ProjectList;
+export default memo(ProjectList);

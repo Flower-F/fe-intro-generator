@@ -2,8 +2,8 @@ import { ChangeEvent, useState } from 'react';
 import { Button, Input, Modal } from 'antd';
 import { parseJsonByString } from '../../../common/utils';
 import { axiosInstance } from '../../../common/request';
-import styles from './style.module.scss';
 import useStore from '../../hooks/useStore';
+import styles from './style.module.scss';
 
 const SEOManagement = () => {
   const { schema, changePageAttribute, changeSchema } = useStore();

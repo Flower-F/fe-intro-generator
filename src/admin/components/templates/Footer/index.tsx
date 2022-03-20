@@ -1,4 +1,5 @@
 import { Input, Button } from 'antd';
+import { memo } from 'react';
 import { GiCancel } from 'react-icons/gi';
 import { IFooterItem } from '../../../../common/types/schema';
 import commonStyles from '../common.module.scss';
@@ -81,4 +82,4 @@ const Footer: React.FC<IFooterProps> = ({ children, changeChildren }) => {
   );
 };
 
-export default Footer;
+export default memo(Footer);

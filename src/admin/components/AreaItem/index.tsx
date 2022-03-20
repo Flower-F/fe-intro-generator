@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { Button, Modal, Select } from 'antd';
 import { cloneDeep } from 'lodash';
 import { SortableElement } from 'react-sortable-hoc';
@@ -7,10 +7,9 @@ import Detail from '../templates/Detail';
 import Hero from '../templates/Hero';
 import TechStackList from '../templates/TechStackList';
 import ProjectList from '../templates/ProjectList';
-
-import styles from './style.module.scss';
 import useStore from '../../hooks/useStore';
 import { IFooterItem, IProjectItem } from '../../../common/types/schema';
+import styles from './style.module.scss';
 
 const { Option } = Select;
 
@@ -50,22 +49,26 @@ const AreaItem: React.FC<AreaItemProps> = ({ value: index }) => {
     });
   };
 
-  const changeTempPageChildAttributes = (obj: { [x: string]: any }) => {
-    const newTempChild = { ...tempPageChild };
-    for (const key in obj) {
-      // @ts-ignore
-      newTempChild.attributes[key] = obj[key];
-    }
-    setTempPageChild(newTempChild);
-  };
+  const changeTempPageChildAttributes = useCallback(
+    (obj: { [x: string]: any }) => {
+      const newTempChild = { ...tempPageChild };
+      for (const key in obj) {
+        // @ts-ignore
+        newTempChild.attributes[key] = obj[key];
+      }
+      setTempPageChild(newTempChild);
+    },
+    [tempPageChild],
+  );
 
-  const changeTempPageChildren = (
-    children: [] | IProjectItem[] | IFooterItem[],
-  ) => {
-    const newTempChild = { ...tempPageChild };
-    newTempChild.children = children;
-    setTempPageChild(newTempChild);
-  };
+  const changeTempPageChildren = useCallback(
+    (children: [] | IProjectItem[] | IFooterItem[]) => {
+      const newTempChild = { ...tempPageChild };
+      newTempChild.children = children;
+      setTempPageChild(newTempChild);
+    },
+    [tempPageChild],
+  );
 
   const getComponent = () => {
     const { name } = tempPageChild;

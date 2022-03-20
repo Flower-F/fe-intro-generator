@@ -1,4 +1,5 @@
 import { Checkbox } from 'antd';
+import { memo } from 'react';
 import { techStackListData } from '../../../../common/data/TechStackListData';
 import commonStyles from '../common.module.scss';
 import styles from './style.module.scss';
@@ -39,4 +40,4 @@ const TechStackList: React.FC<ITechStackList> = ({
   );
 };
 
-export default TechStackList;
+export default memo(TechStackList);

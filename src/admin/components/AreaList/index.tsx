@@ -1,9 +1,9 @@
 import { Button } from 'antd';
 import AreaItem from '../AreaItem';
 import { SortableContainer } from 'react-sortable-hoc';
-import styles from './style.module.scss';
 import { IAllSchema } from '../../../common/types/schema';
 import useStore from '../../hooks/useStore';
+import styles from './style.module.scss';
 
 const SortableList = SortableContainer(({ list }: { list: IAllSchema[] }) => {
   return (

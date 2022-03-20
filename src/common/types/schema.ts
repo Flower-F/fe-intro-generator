@@ -4,7 +4,7 @@ export interface IDetailSchema {
   attributes: {
     index: number;
     description: string;
-    reverse: boolean;
+    percent: number;
   };
   children: [];
 }

@@ -1,4 +1,5 @@
 import { Input } from 'antd';
+import { memo } from 'react';
 import commonStyles from '../common.module.scss';
 import styles from './style.module.scss';
 
@@ -45,4 +46,4 @@ const Hero: React.FC<IHeroProps> = ({ attributes, changeAttributes }) => {
   );
 };
 
-export default Hero;
+export default memo(Hero);

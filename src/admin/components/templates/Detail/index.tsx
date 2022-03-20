@@ -1,4 +1,5 @@
-import { Input, Select } from 'antd';
+import { Input, Select, Slider } from 'antd';
+import { memo } from 'react';
 import { techStackListData } from '../../../../common/data/TechStackListData';
 import commonStyles from '../common.module.scss';
 import styles from './style.module.scss';
@@ -10,18 +11,25 @@ interface IDetailProps {
   changeAttributes: ({
     index,
     description,
+    percent,
   }: {
     index?: string;
     description?: string;
+    percent?: number;
   }) => void;
   attributes: {
     index: number;
     description: string;
+    percent: number;
   };
 }
 
 const Detail: React.FC<IDetailProps> = ({ changeAttributes, attributes }) => {
-  const { index = 0, description = '' } = attributes;
+  const { index = 0, description = '', percent = 50 } = attributes;
+
+  function formatter(value = 0) {
+    return `${value}%`;
+  }
 
   return index < techStackListData.length ? (
     <div className={commonStyles.wrapper}>
@@ -39,6 +47,14 @@ const Detail: React.FC<IDetailProps> = ({ changeAttributes, attributes }) => {
           ))}
         </Select>
       </div>
+      <div className={styles.handle}>
+        掌握程度
+        <Slider
+          tipFormatter={formatter}
+          value={percent}
+          onChange={(value) => changeAttributes({ percent: value })}
+        />
+      </div>
       <div className={styles.row}>
         <span className={styles.label}>详细描述</span>
         <TextArea
@@ -53,4 +69,4 @@ const Detail: React.FC<IDetailProps> = ({ changeAttributes, attributes }) => {
   ) : null;
 };
 
-export default Detail;
+export default memo(Detail);
