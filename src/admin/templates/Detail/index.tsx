@@ -1,6 +1,6 @@
 import { Input, Select, Slider } from 'antd';
 import { memo } from 'react';
-import { techStackListData } from '../../../../common/data/TechStackListData';
+import { techStackListData } from '../../../common/data/TechStackListData';
 import commonStyles from '../common.module.scss';
 import styles from './style.module.scss';
 

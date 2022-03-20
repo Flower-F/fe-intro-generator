@@ -10,6 +10,8 @@
   body {
     background: #e6e6e6;
     overflow-x: hidden;
+    font-family: Microsoft YaHei, Heiti SC, tahoma, arial, Hiragino Sans GB,
+      '\5B8B\4F53', sans-serif;
   }
 
   section {

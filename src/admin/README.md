@@ -1,32 +1,9 @@
 # 后台界面
 
-目前后台中还存在 3 处地方的类型问题还未解决，需要补充相关的知识：
-
-```ts
-const handleSelectorChange = (value: any) => {
-  setTempPageChild({
-    name: value,
-    attributes: {},
-    children: [],
-  });
-};
-
-const changeTempPageChildAttributes = (obj: { [x: string]: any }) => {
-  const newTempChild = { ...tempPageChild };
-  for (const key in obj) {
-    // @ts-ignore
-    newTempChild.attributes[key] = obj[key];
-  }
-  setTempPageChild(newTempChild);
-};
-
-const changeChildrenItem = (index: number, key: string, value: string) => {
-  const originItem = children[index];
-  const item = { ...(originItem as IFooterItem) };
-  // @ts-ignore
-  item.attributes[key] = value;
-  const newChildren = [...children];
-  newChildren.splice(index, 1, item);
-  changeChildren(newChildren);
-};
-```
+- components 为组件级别
+  - AreaItem：具体的单个表单组件
+  - AreaList：页面整体的表单列表
+- containers 为页面级别
+- templates：各个表单的模板
+- hooks：自定义 Hook
+- utils：工具函数

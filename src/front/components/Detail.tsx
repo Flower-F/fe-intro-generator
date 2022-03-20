@@ -14,10 +14,10 @@ const Detail: React.FC<IDetailProps> = ({ schema }) => {
 
   return (
     <section
-      className="relative inline-flex items-center justify-center w-full min-h-screen
-        duration-300 ease-out rounded shadow-md group
+      className="relative inline-flex items-center justify-center w-full 
+        min-h-screen duration-300 ease-out shadow-md group rounded-2xl
         cursor-pointer overflow-hidden"
-      // style={{ border: `2px solid ${color}` }}
+      style={{ border: `4px solid ${color}` }}
     >
       <span
         className="absolute inset-0 flex flex-col items-center justify-center 

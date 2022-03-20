@@ -1,29 +1,23 @@
 import { Input, Button } from 'antd';
 import { memo } from 'react';
 import { GiCancel } from 'react-icons/gi';
-import { IProjectItem } from '../../../../common/types/schema';
+import { IFooterItem } from '../../../common/types/schema';
 import commonStyles from '../common.module.scss';
 import styles from './style.module.scss';
 
-const { TextArea } = Input;
-
-interface IProjectListProps {
-  children: IProjectItem[];
-  changeChildren: (newChildren: IProjectItem[]) => void;
+interface IFooterProps {
+  children: Array<IFooterItem>;
+  changeChildren: (newChildren: IFooterItem[]) => void;
 }
 
-const ProjectList: React.FC<IProjectListProps> = ({
-  children,
-  changeChildren,
-}) => {
+const Footer: React.FC<IFooterProps> = ({ children, changeChildren }) => {
   const addItemToChildren = () => {
     const newChildren = [...children];
     newChildren.push({
-      name: 'ProjectItem',
+      name: 'FooterItem',
       attributes: {
         title: '',
         link: '',
-        description: '',
       },
       children: [],
     });
@@ -38,7 +32,7 @@ const ProjectList: React.FC<IProjectListProps> = ({
 
   const changeChildrenItem = (index: number, key: string, value: string) => {
     const originItem = children[index];
-    const item = { ...(originItem as IProjectItem) };
+    const item = { ...(originItem as IFooterItem) };
     // @ts-ignore
     item.attributes[key] = value;
     const newChildren = [...children];
@@ -55,7 +49,7 @@ const ProjectList: React.FC<IProjectListProps> = ({
       >
         新增列表项
       </Button>
-      {children.map(({ attributes: { title, description, link } }, index) => (
+      {children.map(({ attributes: { title, link } }, index) => (
         <div className={styles.area} key={index}>
           <div className={styles.delete}>
             <GiCancel onClick={() => deleteItemFromChildren(index)} />
@@ -69,18 +63,6 @@ const ProjectList: React.FC<IProjectListProps> = ({
               onChange={(e) =>
                 changeChildrenItem(index, 'title', e.target.value)
               }
-            />
-          </div>
-          <div className={styles.row}>
-            <span className={styles.label}>描述</span>
-            <TextArea
-              rows={4}
-              placeholder="请输入关于项目的描述"
-              value={description}
-              onChange={(e) =>
-                changeChildrenItem(index, 'description', e.target.value)
-              }
-              style={{ marginLeft: 4 }}
             />
           </div>
           <div className={styles.row}>
@@ -100,4 +82,4 @@ const ProjectList: React.FC<IProjectListProps> = ({
   );
 };
 
-export default memo(ProjectList);
+export default memo(Footer);
