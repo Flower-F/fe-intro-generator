@@ -1,4 +1,5 @@
 import React, { ChangeEvent, FormEvent, useState } from 'react';
+import { message } from 'antd';
 import { axiosInstance } from '../../common/request';
 import { IFormSchema } from '../../common/types/schema';
 
@@ -12,8 +13,22 @@ const Form: React.FC<IFormProps> = ({ schema }) => {
 
   const sendContent = (e: FormEvent) => {
     e.preventDefault();
-    console.log(content);
-    setContent({});
+    axiosInstance
+      .post('/sendContent', content)
+      .then((res) => {
+        const data = res.data;
+        if (data && data.code === 200) {
+          message.success(data.message);
+        } else {
+          message.warning(data.message);
+        }
+      })
+      .catch(() => {
+        message.error('网络错误');
+      })
+      .finally(() => {
+        setContent({});
+      });
   };
 
   const changeContent = (
