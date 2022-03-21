@@ -4,7 +4,7 @@ import { Route, Routes, HashRouter as Router, NavLink } from 'react-router-dom';
 import { Layout, Menu, Tooltip, Spin } from 'antd';
 import {
   SettingOutlined,
-  RollbackOutlined,
+  BulbOutlined,
   MenuUnfoldOutlined,
   MenuFoldOutlined,
   FormOutlined,
@@ -18,6 +18,7 @@ import 'normalize.css';
 import 'antd/dist/antd.css';
 import styles from './style.module.scss';
 import useStore from './hooks/useStore';
+import { logout } from './utils/logout';
 
 const PageAttributeManagement = lazy(
   () => import('./containers/PageAttributeManagement'),
@@ -40,23 +41,10 @@ const useCollapsed = () => {
   };
 };
 
-const useLoading = () => {
-  const [loading, setLoading] = useState(false);
-  return { loading, setLoading };
-};
-
 const MyLayout = () => {
-  const handleHomePageRedirect = () => {
-    window.location.href = '/index.html';
-  };
-
   const handleLogout = () => {
     getAuthClient()?.logout();
-    localStorage.removeItem('token');
-    localStorage.removeItem('tokenExpiredAt');
-    localStorage.removeItem('photo');
-    localStorage.removeItem('_authing_token');
-    localStorage.removeItem('_authing_user');
+    logout();
     window.location.reload();
   };
 
@@ -70,18 +58,22 @@ const MyLayout = () => {
 
   const { collapsed, handleToggleCollapsed } = useCollapsed();
   const { changeSchema } = useStore();
-  const { loading, setLoading } = useLoading();
+  const [loading, setLoading] = useState(false);
 
   const login = getLoginStatus();
-  const photo = window.localStorage.photo;
+  const photo = localStorage.photo;
 
   useEffect(() => {
     setLoading(true);
     axiosInstance
-      .get('/getLatestOne')
+      .get('/getLatestOne', {
+        params: {
+          id: localStorage.getItem('id'),
+        },
+      })
       .then((res) => {
         const data = res?.data;
-        if (data) {
+        if (data && data.code === 200) {
           // console.log(data.schema);
           changeSchema(parseJsonByString(data.schema));
         }
@@ -113,12 +105,16 @@ const MyLayout = () => {
             <Menu.Item key="admin-page-attr" icon={<SettingOutlined />}>
               <NavLink to="/page-attr">页面属性设置</NavLink>
             </Menu.Item>
-            <Menu.Item
-              key="admin-back"
-              onClick={handleHomePageRedirect}
-              icon={<RollbackOutlined />}
-            >
-              返回用户页面
+            <Menu.Item key="admin-back" icon={<BulbOutlined />}>
+              <a
+                href={`${
+                  window.location.origin
+                }/index.html?id=${localStorage.getItem('id')}`}
+                target="_blank"
+                rel="noreferrer"
+              >
+                查看生成页面
+              </a>
             </Menu.Item>
           </Menu>
         </Sider>

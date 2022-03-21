@@ -1,5 +1,7 @@
+import { logout } from './logout';
+
 export const getLoginStatus = () => {
-  const { token, tokenExpiredAt } = window.localStorage;
+  const { token, tokenExpiredAt } = localStorage;
 
   const currentTime = new Date().getTime();
   const expiredTime = new Date(tokenExpiredAt).getTime();
@@ -11,11 +13,7 @@ export const getLoginStatus = () => {
   }
 
   if (!login) {
-    localStorage.removeItem('token');
-    localStorage.removeItem('tokenExpiredAt');
-    localStorage.removeItem('photo');
-    localStorage.removeItem('_authing_token');
-    localStorage.removeItem('_authing_user');
+    logout();
   }
 
   return login;

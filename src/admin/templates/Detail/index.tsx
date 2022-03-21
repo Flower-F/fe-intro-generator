@@ -25,7 +25,7 @@ interface IDetailProps {
 }
 
 const Detail: React.FC<IDetailProps> = ({ changeAttributes, attributes }) => {
-  const { index = 0, description = '', percent = 50 } = attributes;
+  const { index = 0, description = '', percent = 0 } = attributes;
 
   function formatter(value = 0) {
     return `${value}%`;

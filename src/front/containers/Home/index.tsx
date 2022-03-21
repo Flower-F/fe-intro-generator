@@ -10,6 +10,7 @@ import Form from '../../components/Form';
 import { IAllSchema } from '../../../common/types/schema';
 import { parseJsonByString } from '../../../common/utils';
 import { axiosInstance } from '../../../common/request';
+import { getParams } from '../../../common/request/getParams';
 
 const render = (index: number, schema: IAllSchema) => {
   switch (schema.name) {
@@ -42,10 +43,14 @@ const Home = () => {
   useEffect(() => {
     setLoading(true);
     axiosInstance
-      .get('/getLatestOne')
+      .get('/getLatestOne', {
+        params: {
+          id: getParams().id,
+        },
+      })
       .then((res) => {
         const data = res?.data;
-        if (data) {
+        if (data && data.code === 200) {
           setPageSchema(parseJsonByString(data.schema));
         }
       })

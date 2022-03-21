@@ -28,16 +28,18 @@ const Hero: React.FC<IHeroProps> = ({ schema }) => {
           {description}
         </p>
 
-        <div
-          className="w-40 h-40 shadow-hover rounded-full
-        flex items-center justify-center mt-4"
-        >
-          <img
-            src={link}
-            alt="我的头像"
-            className="w-32 h-32 shadow-normal rounded-full"
-          />
-        </div>
+        {link && (
+          <div
+            className="w-40 h-40 shadow-hover rounded-full
+       flex items-center justify-center mt-4"
+          >
+            <img
+              src={link}
+              alt="我的头像"
+              className="w-32 h-32 shadow-normal rounded-full"
+            />
+          </div>
+        )}
 
         <a
           className="mt-6 px-6 py-3 rounded-lg 

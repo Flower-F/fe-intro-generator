@@ -17,7 +17,7 @@ const initialSchema = {
     description: '',
     title: '',
   },
-  children: new Array<IAllSchema>(),
+  children: [],
 };
 
 export interface IPageSchemaState {

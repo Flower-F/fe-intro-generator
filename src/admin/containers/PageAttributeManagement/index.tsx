@@ -5,7 +5,7 @@ import { axiosInstance } from '../../../common/request';
 import useStore from '../../hooks/useStore';
 import styles from './style.module.scss';
 
-const SEOManagement = () => {
+const PageAttributeManagement = () => {
   const { schema, changePageAttribute, changeSchema } = useStore();
   const { attributes } = schema;
   const { title = '', description = '' } = attributes;
@@ -17,6 +17,7 @@ const SEOManagement = () => {
     axiosInstance
       .post('/save', {
         schema: JSON.stringify(schema),
+        id: localStorage.getItem('id'),
       })
       .then((res) => {
         const data = res?.data;
@@ -32,9 +33,9 @@ const SEOManagement = () => {
             content: '保存成功',
           });
         }
-        setLoadingSave(false);
       })
-      .catch(() => {
+      .catch(() => {})
+      .finally(() => {
         setLoadingSave(false);
       });
   };
@@ -42,15 +43,19 @@ const SEOManagement = () => {
   const handleResetButtonClick = () => {
     setLoadingReset(true);
     axiosInstance
-      .get('/getLatestOne')
+      .get('/getLatestOne', {
+        params: {
+          id: localStorage.getItem('id'),
+        },
+      })
       .then((res) => {
         const data = res?.data;
         if (data) {
           changeSchema(parseJsonByString(data.schema));
         }
-        setLoadingReset(false);
       })
-      .catch(() => {
+      .catch(() => {})
+      .finally(() => {
         setLoadingReset(false);
       });
   };
@@ -65,7 +70,7 @@ const SEOManagement = () => {
             onChange={(e: ChangeEvent<HTMLInputElement>) => {
               changePageAttribute('title', e.target.value);
             }}
-            placeholder="请输入页面标题（尽量简洁）"
+            placeholder="请输入页面标题"
           />
         </div>
       </div>
@@ -77,7 +82,7 @@ const SEOManagement = () => {
             onChange={(e: ChangeEvent<HTMLInputElement>) => {
               changePageAttribute('description', e.target.value);
             }}
-            placeholder="请输入页面描述（尽量简洁）"
+            placeholder="请输入页面描述"
           />
         </div>
       </div>
@@ -103,4 +108,4 @@ const SEOManagement = () => {
   );
 };
 
-export default SEOManagement;
+export default PageAttributeManagement;

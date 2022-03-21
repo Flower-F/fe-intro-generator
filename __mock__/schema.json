@@ -9,7 +9,8 @@
       "name": "Hero",
       "attributes": {
         "title": "FE Intro Generator",
-        "description": "一款前端程序员个人介绍页生成器"
+        "description": "一款前端程序员个人介绍页生成器",
+        "link": "https://qcnvi3.file.qingfuwucdn.com/file/cc0d120f095232c9_1647847282188.jpg"
       },
       "children": []
     },
@@ -44,8 +45,8 @@
       "name": "Detail",
       "attributes": {
         "index": 2,
-        "description": "熟悉 JavaScript 语法，包括 ES6+ 内容。",
-        "percent": "80"
+        "description": "熟悉 JavaScript 语法，包括 ES6+ 内容",
+        "percent": 80
       },
       "children": []
     },
@@ -53,8 +54,8 @@
       "name": "Detail",
       "attributes": {
         "index": 10,
-        "description": "熟悉 Webpack 配置，可以使用 webpack 配置 React 开发环境，了解基本的开发和打包优化。",
-        "percent": "70"
+        "description": "熟悉 Webpack 配置，可以使用 Webpack 配置 React 开发环境，了解基本的开发和打包优化",
+        "percent": 70
       },
       "children": []
     },
@@ -62,8 +63,17 @@
       "name": "Detail",
       "attributes": {
         "index": 4,
-        "description": "熟悉 React 全家桶的使用，包括 redux、react-router，了解 React 的核心原理",
-        "percent": "75"
+        "description": "熟悉 React 全家桶的使用，了解 React 的核心原理",
+        "percent": 75
+      },
+      "children": []
+    },
+    {
+      "name": "Detail",
+      "attributes": {
+        "index": 7,
+        "description": "了解 Sass 的基本使用方法",
+        "percent": 75
       },
       "children": []
     },
@@ -110,6 +120,40 @@
       ]
     },
     {
+      "name": "Form",
+      "attributes": {
+        "link": "312321213"
+      },
+      "children": [
+        {
+          "name": "FormItem",
+          "attributes": {
+            "name": "昵称",
+            "key": "邮箱",
+            "rows": "1"
+          },
+          "children": []
+        },
+        {
+          "name": "FormItem",
+          "attributes": {
+            "name": "联系方式",
+            "key": "建议",
+            "rows": "1"
+          },
+          "children": []
+        },
+        {
+          "name": "FormItem",
+          "attributes": {
+            "name": "建议",
+            "rows": "4"
+          },
+          "children": []
+        }
+      ]
+    },
+    {
       "name": "Footer",
       "attributes": {},
       "children": [
@@ -125,7 +169,7 @@
           "name": "FooterItem",
           "attributes": {
             "title": "我的 github",
-            "link": "https://github.com/Flower-F"
+            "link": "https://github.com/flower-f"
           },
           "children": []
         }

@@ -2,6 +2,7 @@ import React, { ChangeEvent, FormEvent, useState } from 'react';
 import { message } from 'antd';
 import { axiosInstance } from '../../common/request';
 import { IFormSchema } from '../../common/types/schema';
+import { getParams } from '../../common/request/getParams';
 
 interface IFormProps {
   schema: IFormSchema;
@@ -14,7 +15,7 @@ const Form: React.FC<IFormProps> = ({ schema }) => {
   const sendContent = (e: FormEvent) => {
     e.preventDefault();
     axiosInstance
-      .post('/sendContent', content)
+      .post('/sendContent', { ...content, id: getParams().id })
       .then((res) => {
         const data = res.data;
         if (data && data.code === 200) {

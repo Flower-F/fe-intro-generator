@@ -16,6 +16,7 @@ const HomeManagement = () => {
     axiosInstance
       .post('/save', {
         schema: JSON.stringify(schema),
+        id: localStorage.getItem('id'),
       })
       .then((res) => {
         const data = res?.data;
@@ -31,9 +32,9 @@ const HomeManagement = () => {
             content: '保存成功',
           });
         }
-        setLoadingSave(false);
       })
-      .catch(() => {
+      .catch(() => {})
+      .finally(() => {
         setLoadingSave(false);
       });
   };
@@ -41,15 +42,19 @@ const HomeManagement = () => {
   const handleResetButtonClick = () => {
     setLoadingReset(true);
     axiosInstance
-      .get('/getLatestOne')
+      .get('/getLatestOne', {
+        params: {
+          id: localStorage.getItem('id'),
+        },
+      })
       .then((res) => {
         const data = res?.data;
         if (data) {
           changeSchema(parseJsonByString(data.schema));
         }
-        setLoadingReset(false);
       })
-      .catch(() => {
+      .catch(() => {})
+      .finally(() => {
         setLoadingReset(false);
       });
   };

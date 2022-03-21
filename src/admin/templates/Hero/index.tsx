@@ -45,7 +45,7 @@ const Hero: React.FC<IHeroProps> = ({ attributes, changeAttributes }) => {
         .then((data) => {
           // console.log(data);
           changeAttributes({ link: data.url });
-          console.log('link', link);
+          // console.log('link', link);
         })
         .catch(() => {})
         .finally(() => {

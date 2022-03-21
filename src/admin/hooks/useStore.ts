@@ -27,7 +27,7 @@ const useStore = (index = 0) => {
   const children = useSelector(
     (state: RootState) => state.admin.schema?.children || [],
   );
-  // 为一级 schema 添加二级 schema
+  // 为一级 schema 添加一个新的二级 schema
   const addPageChildren = () => {
     dispatch(getAddPageChildrenAction());
   };

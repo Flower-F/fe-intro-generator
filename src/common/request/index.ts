@@ -68,7 +68,7 @@ axiosInstance.interceptors.response.use(
 axiosInstance.interceptors.request.use(
   (config) => {
     if (config.method === 'post') {
-      const { token } = window.localStorage;
+      const { token } = localStorage;
       if (token && config.headers) {
         config.headers.token = token;
       }
