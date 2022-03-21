@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet';
-import { Skeleton } from 'antd';
+import { message, Skeleton } from 'antd';
 import Footer from '../../components/Footer';
 import ProjectList from '../../components/ProjectList';
 import Detail from '../../components/Detail';
@@ -54,7 +54,9 @@ const Home = () => {
           setPageSchema(parseJsonByString(data.schema));
         }
       })
-      .catch(() => {})
+      .catch(() => {
+        message.error('网络错误');
+      })
       .finally(() => {
         setLoading(false);
       });

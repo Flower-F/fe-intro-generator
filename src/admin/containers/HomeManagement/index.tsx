@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Button, Modal } from 'antd';
+import { Button, message, Modal } from 'antd';
 import AreaList from '../../components/AreaList';
 import { parseJsonByString } from '../../../common/utils';
 import { axiosInstance } from '../../../common/request';
@@ -53,7 +53,9 @@ const HomeManagement = () => {
           changeSchema(parseJsonByString(data.schema));
         }
       })
-      .catch(() => {})
+      .catch(() => {
+        message.error('网络错误');
+      })
       .finally(() => {
         setLoadingReset(false);
       });

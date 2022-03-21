@@ -1,5 +1,5 @@
 import { ChangeEvent, useState } from 'react';
-import { Button, Input, Modal } from 'antd';
+import { Button, Input, message, Modal } from 'antd';
 import { parseJsonByString } from '../../../common/utils';
 import { axiosInstance } from '../../../common/request';
 import useStore from '../../hooks/useStore';
@@ -54,7 +54,9 @@ const PageAttributeManagement = () => {
           changeSchema(parseJsonByString(data.schema));
         }
       })
-      .catch(() => {})
+      .catch(() => {
+        message.error('网络错误');
+      })
       .finally(() => {
         setLoadingReset(false);
       });

@@ -1,7 +1,7 @@
 import { useState, useEffect, lazy, Suspense } from 'react';
 import HomeManagement from './containers/HomeManagement';
 import { Route, Routes, HashRouter as Router, NavLink } from 'react-router-dom';
-import { Layout, Menu, Tooltip, Spin } from 'antd';
+import { Layout, Menu, Tooltip, Spin, message } from 'antd';
 import {
   SettingOutlined,
   BulbOutlined,
@@ -77,9 +77,11 @@ const MyLayout = () => {
           // console.log(data.schema);
           changeSchema(parseJsonByString(data.schema));
         }
-        setLoading(false);
       })
       .catch(() => {
+        message.error('网络错误');
+      })
+      .finally(() => {
         setLoading(false);
       });
     // eslint-disable-next-line react-hooks/exhaustive-deps
