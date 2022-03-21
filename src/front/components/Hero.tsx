@@ -39,8 +39,8 @@ const Hero: React.FC<IHeroProps> = ({ schema }) => {
           />
         </div>
 
-        {/* <a
-          className="mt-4 px-6 py-3 rounded-lg 
+        <a
+          className="mt-6 px-6 py-3 rounded-lg 
           cursor-pointer text-xl text-[#444]
           shadow-normal hover:shadow-hover hidden xl:inline-block
           hover:text-[#27ae60]"
@@ -49,7 +49,7 @@ const Hero: React.FC<IHeroProps> = ({ schema }) => {
           rel="noreferrer"
         >
           参观后台
-        </a> */}
+        </a>
       </>
     </section>
   );

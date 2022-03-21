@@ -7,7 +7,7 @@ import {
   RollbackOutlined,
   MenuUnfoldOutlined,
   MenuFoldOutlined,
-  SearchOutlined,
+  FormOutlined,
 } from '@ant-design/icons';
 import Login from './containers/Login';
 import { parseJsonByString } from '../common/utils';
@@ -19,7 +19,9 @@ import 'antd/dist/antd.css';
 import styles from './style.module.scss';
 import useStore from './hooks/useStore';
 
-const SEOManagement = lazy(() => import('./containers/SEOManagement'));
+const PageAttributeManagement = lazy(
+  () => import('./containers/PageAttributeManagement'),
+);
 
 initAuthClient({
   appId: '62110454c4fafbf8af15124a',
@@ -59,8 +61,8 @@ const MyLayout = () => {
   };
 
   const getDefaultSelectedKeys = () => {
-    if (window.location.hash === '#/seo') {
-      return ['admin-seo'];
+    if (window.location.hash === '#/page-attr') {
+      return ['admin-page-attr'];
     } else {
       return ['admin-home'];
     }
@@ -105,11 +107,11 @@ const MyLayout = () => {
             mode="inline"
             defaultSelectedKeys={getDefaultSelectedKeys()}
           >
-            <Menu.Item key="admin-home" icon={<SettingOutlined />}>
+            <Menu.Item key="admin-home" icon={<FormOutlined />}>
               <NavLink to="/">首页内容管理</NavLink>
             </Menu.Item>
-            <Menu.Item key="admin-seo" icon={<SearchOutlined />}>
-              <NavLink to="/seo">SEO 优化</NavLink>
+            <Menu.Item key="admin-page-attr" icon={<SettingOutlined />}>
+              <NavLink to="/page-attr">页面属性设置</NavLink>
             </Menu.Item>
             <Menu.Item
               key="admin-back"
@@ -145,10 +147,10 @@ const MyLayout = () => {
             <Routes>
               <Route path="/" element={<HomeManagement />}></Route>
               <Route
-                path="/seo"
+                path="/page-attr"
                 element={
                   <Suspense fallback={<>loading...</>}>
-                    <SEOManagement />
+                    <PageAttributeManagement />
                   </Suspense>
                 }
               ></Route>

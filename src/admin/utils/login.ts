@@ -14,6 +14,8 @@ export const getLoginStatus = () => {
     localStorage.removeItem('token');
     localStorage.removeItem('tokenExpiredAt');
     localStorage.removeItem('photo');
+    localStorage.removeItem('_authing_token');
+    localStorage.removeItem('_authing_user');
   }
 
   return login;
