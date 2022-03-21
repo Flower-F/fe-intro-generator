@@ -28,10 +28,7 @@ const TechStackList: React.FC<ITechStackListProps> = ({ schema }) => {
 
   return (
     <section ref={ref}>
-      <h3
-        className="text-black font-bold
-      text-4xl mb-6 text-center"
-      >
+      <h3 className="text-black font-bold text-4xl mb-6 text-center">
         我的技术栈
       </h3>
       <motion.div

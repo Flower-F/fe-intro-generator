@@ -8,25 +8,15 @@ import styles from './style.module.scss';
 interface IFormProps {
   children: Array<IFormItem>;
   changeChildren: (newChildren: IFormItem[]) => void;
-  attributes: {
-    link: string;
-  };
-  changeAttributes: ({ link }: { link?: string }) => void;
 }
 
-const Form: React.FC<IFormProps> = ({
-  children,
-  changeChildren,
-  attributes,
-  changeAttributes,
-}) => {
+const Form: React.FC<IFormProps> = ({ children, changeChildren }) => {
   const addItemToChildren = () => {
     const newChildren = [...children];
     newChildren.push({
       name: 'FormItem',
       attributes: {
         name: '',
-        key: '',
         rows: '1',
       },
       children: [],
@@ -50,19 +40,8 @@ const Form: React.FC<IFormProps> = ({
     changeChildren(newChildren);
   };
 
-  const { link } = attributes;
-
   return (
     <div className={commonStyles.wrapper}>
-      <div className={styles.row}>
-        <span className={styles.label}>请求链接</span>
-        <Input
-          className={styles.content}
-          placeholder="请输入后端请求链接"
-          value={link}
-          onChange={(e) => changeAttributes({ link: e.target.value })}
-        />
-      </div>
       <Button
         type="primary"
         className={styles.button}
@@ -70,7 +49,7 @@ const Form: React.FC<IFormProps> = ({
       >
         新增列表项
       </Button>
-      {children.map(({ attributes: { key, name, rows } }, index) => (
+      {children.map(({ attributes: { name, rows } }, index) => (
         <div className={styles.area} key={index}>
           <div className={styles.delete}>
             <GiCancel onClick={() => deleteItemFromChildren(index)} />
@@ -80,15 +59,6 @@ const Form: React.FC<IFormProps> = ({
             <Input
               className={styles.content}
               placeholder="请输入表项名"
-              value={key}
-              onChange={(e) => changeChildrenItem(index, 'key', e.target.value)}
-            />
-          </div>
-          <div className={styles.row}>
-            <span className={styles.label}>字段名</span>
-            <Input
-              className={styles.content}
-              placeholder="请输入表项对应的后端数据库字段名"
               value={name}
               onChange={(e) =>
                 changeChildrenItem(index, 'name', e.target.value)

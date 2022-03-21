@@ -47,7 +47,7 @@ const ProjectItem: React.FC<IProjectItemProps> = ({
 
       <a
         className={`flex w-full items-center justify-center
-      text-center text-base shadow-normal py-4 transition
+      text-center text-base shadow-normal py-2 transition
       rounded-[5px] hover:shadow-hover max-w-[180px]
       mx-auto
       hover:text-[#27ae60] ${open ? 'flex' : 'hidden'}`}

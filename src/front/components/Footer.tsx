@@ -10,10 +10,7 @@ const Footer: React.FC<IFooterProps> = ({ schema }) => {
 
   return (
     <footer>
-      <ul
-        className="flex m-auto mt-2 flex-wrap
-    shadow-normal py-4 justify-center"
-      >
+      <ul className="flex m-auto mt-2 flex-wrap shadow-normal py-4 justify-center">
         {children.map(({ attributes: { link = '', title = '' } }, index) => (
           <li
             key={index}

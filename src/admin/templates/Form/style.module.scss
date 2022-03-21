@@ -41,5 +41,8 @@
       line-height: 40px;
       width: 54px;
     }
+    :global(.ant-input-number-input) {
+      max-width: 100px;
+    }
   }
 }

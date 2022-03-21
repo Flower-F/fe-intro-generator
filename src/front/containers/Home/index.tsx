@@ -1,14 +1,15 @@
 import { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet';
 import { Skeleton } from 'antd';
-import { parseJsonByString } from '../../../common/utils';
-import { axiosInstance } from '../../../common/request';
 import Footer from '../../components/Footer';
 import ProjectList from '../../components/ProjectList';
 import Detail from '../../components/Detail';
 import TechStackList from '../../components/TechStackList';
 import Hero from '../../components/Hero';
+import Form from '../../components/Form';
 import { IAllSchema } from '../../../common/types/schema';
+import { parseJsonByString } from '../../../common/utils';
+import { axiosInstance } from '../../../common/request';
 
 const render = (index: number, schema: IAllSchema) => {
   switch (schema.name) {
@@ -22,6 +23,8 @@ const render = (index: number, schema: IAllSchema) => {
       return <ProjectList key={index} schema={schema} />;
     case 'TechStackList':
       return <TechStackList key={index} schema={schema} />;
+    case 'Form':
+      return <Form key={index} schema={schema} />;
     default:
       break;
   }

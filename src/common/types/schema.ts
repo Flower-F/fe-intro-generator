@@ -67,7 +67,6 @@ export interface IFormItem {
   name: 'FormItem';
   attributes: {
     name: string;
-    key: string;
     rows: string;
   };
   children: [];
@@ -75,9 +74,7 @@ export interface IFormItem {
 
 export interface IFormSchema {
   name: 'Form';
-  attributes: {
-    link: string;
-  };
+  attributes: {};
   children: Array<IFormItem>;
 }
 

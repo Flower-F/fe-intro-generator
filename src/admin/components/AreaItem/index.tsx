@@ -113,11 +113,7 @@ const AreaItem: React.FC<AreaItemProps> = ({ value: index }) => {
         );
       case 'Form':
         return (
-          <Form
-            {...tempPageChild}
-            changeChildren={changeTempPageChildren}
-            changeAttributes={changeTempPageChildAttributes}
-          />
+          <Form {...tempPageChild} changeChildren={changeTempPageChildren} />
         );
       default:
         break;

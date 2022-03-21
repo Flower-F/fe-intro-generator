@@ -14,14 +14,14 @@ const Detail: React.FC<IDetailProps> = ({ schema }) => {
 
   return (
     <section
-      className="relative inline-flex items-center justify-center w-full 
-        min-h-screen duration-300 ease-out shadow-md group rounded-2xl
-        cursor-pointer overflow-hidden"
+      className="relative flex items-center justify-center w-10/12 
+        min-h-screen duration-200 ease-out shadow-md group rounded-2xl
+        cursor-pointer overflow-hidden mx-auto"
       style={{ border: `4px solid ${color}` }}
     >
       <span
         className="absolute inset-0 flex flex-col items-center justify-center 
-        w-full h-full text-white duration-300 -translate-x-full
+        w-full h-full text-white duration-200 -translate-x-full
         group-hover:translate-x-0 ease sm:flex-row"
       >
         <Progress
@@ -40,8 +40,8 @@ const Detail: React.FC<IDetailProps> = ({ schema }) => {
         </p>
       </span>
       <span
-        className="absolute flex items-center justify-center
-         w-full h-full transition-all duration-300 text-[14rem]
+        className="absolute flex items-center justify-center text-[8rem]
+         w-full h-full transition-all duration-300 md:text-[14rem]
          transform group-hover:translate-x-full ease rounded"
         style={{ color: `${color}` }}
       >
