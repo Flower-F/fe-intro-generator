@@ -47,7 +47,6 @@ const Detail: React.FC<IDetailProps> = ({ schema }) => {
       >
         {icon}
       </span>
-      <span className="relative invisible"></span>
     </section>
   );
 };

@@ -58,11 +58,13 @@ const Detail: React.FC<IDetailProps> = ({ changeAttributes, attributes }) => {
       <div className={styles.row}>
         <span className={styles.label}>详细描述</span>
         <TextArea
-          rows={4}
+          rows={3}
           placeholder="请详细描述该技能点"
           value={description}
           onChange={(e) => changeAttributes({ description: e.target.value })}
-          style={{ marginLeft: 10 }}
+          style={{ marginLeft: 10, width: '100%' }}
+          maxLength={120}
+          showCount
         />
       </div>
     </div>

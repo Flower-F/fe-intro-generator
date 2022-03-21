@@ -80,7 +80,9 @@ const ProjectList: React.FC<IProjectListProps> = ({
               onChange={(e) =>
                 changeChildrenItem(index, 'description', e.target.value)
               }
-              style={{ marginLeft: 4 }}
+              showCount
+              maxLength={200}
+              style={{ marginLeft: 4, marginBottom: 10, width: '100%' }}
             />
           </div>
           <div className={styles.row}>
