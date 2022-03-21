@@ -29,9 +29,9 @@ export interface IFooterSchema {
 export interface IHeroSchema {
   name: 'Hero';
   attributes: {
-    nickName: string;
     title: string;
     description: string;
+    link: string;
   };
   children: [];
 }

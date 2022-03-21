@@ -7,6 +7,7 @@
   "dependencies": {
     "@authing/react-ui-components": "^3.0.12",
     "@babel/core": "^7.16.0",
+    "@byteinspire/js-sdk": "^0.5.1",
     "@pmmmwh/react-refresh-webpack-plugin": "^0.5.3",
     "@svgr/webpack": "^5.5.0",
     "@types/node": "^16.7.13",

@@ -6,8 +6,8 @@ interface IHeroProps {
 }
 
 const Hero: React.FC<IHeroProps> = ({ schema }) => {
-  const { attributes = { nickName: '', title: '', description: '' } } = schema;
-  const { title, description } = attributes;
+  const { attributes = { link: '', title: '', description: '' } } = schema;
+  const { title, description, link } = attributes;
 
   return (
     <section
@@ -16,19 +16,30 @@ const Hero: React.FC<IHeroProps> = ({ schema }) => {
     >
       <>
         <h1
-          className="text-6xl leading-none text-[#444] 
+          className="text-4xl sm:text-6xl leading-none text-[#444] 
           font-semibold"
         >
           {title}
         </h1>
         <p
-          className="text-2xl pb-2 text-[#27ae60] leading-snug
+          className="text-xl sm:text-2xl pb-2 text-[#27ae60] leading-snug
         mt-4"
         >
           {description}
         </p>
 
-        <a
+        <div
+          className="w-40 h-40 shadow-hover rounded-full
+        flex items-center justify-center mt-4"
+        >
+          <img
+            src={link}
+            alt="我的头像"
+            className="w-32 h-32 shadow-normal rounded-full"
+          />
+        </div>
+
+        {/* <a
           className="mt-4 px-6 py-3 rounded-lg 
           cursor-pointer text-xl text-[#444]
           shadow-normal hover:shadow-hover hidden xl:inline-block
@@ -38,20 +49,6 @@ const Hero: React.FC<IHeroProps> = ({ schema }) => {
           rel="noreferrer"
         >
           参观后台
-        </a>
-
-        {/* <a
-          href="https://github.com/Flower-F/fe-intro-generator"
-          target="_blank"
-          rel="noreferrer"
-          title={nickName}
-          className="inline-flex text-xl items-center
-          px-6 py-3 text-black bg-transparent 
-          rounded-full mt-8 border-2 hover:text-[#27ae60]
-          border-[#27ae60] transition"
-        >
-          <SiGithub className="mr-2" />
-          Github
         </a> */}
       </>
     </section>

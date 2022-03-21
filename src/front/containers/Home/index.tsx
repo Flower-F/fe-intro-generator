@@ -64,21 +64,13 @@ const Home = () => {
       </Helmet>
       {loading ? (
         <>
-          <div
-            className="wrapper"
-            style={{
-              paddingLeft: 30,
-              paddingRight: 30,
-              marginTop: 10,
-              maxHeight: '100vh',
-            }}
-          >
+          <div className="px-8 mt-3 max-h-screen">
             <Skeleton.Button
               active
               size="large"
               shape="square"
               block
-              style={{ marginTop: 20 }}
+              className="mt-5"
             />
             {[1, 1, 1, 1].map((_, index) => (
               <Skeleton key={index} active />
