@@ -1,8 +1,9 @@
 # 前端程序员个人介绍页生成器
 
 - 2022.3.14 看了一些设计作品，觉得前台太丑了，准备重写前台所有组件样式，目标是可以达到移动端的较好适配。重写之前准备先完全使用 TypeScript 重构前台与后台。
+- 2022.3.20 ~ 2022.3.22，添加表单组件
 
-[在线链接](https://fe-intro-generator-1305624698.file.myqcloud.com/index.html)
+[在线链接](https://fe-intro-generator-1305624698.file.myqcloud.com/admin.html)
 体验账号：test，密码：123456
 
 [技术选型](https://github.com/Flower-F/fe-intro-generator/blob/master/docs/技术选型.md)

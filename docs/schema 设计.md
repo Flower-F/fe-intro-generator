@@ -4,6 +4,6 @@
 
 schema 分层结构示意图：
 
-![](https://cdn.jsdelivr.net/gh/Flower-F/picture@main/img/fe-intro-generator.png)
+![](https://cdn.jsdelivr.net/gh/Flower-F/picture@main/img/schema.jpg)
 
-示例数据在 ****mock**** 下的 schema.json 文件中。
+示例数据在 `__mock__` 下的 schema.json 文件中。
