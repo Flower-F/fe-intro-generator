@@ -49,7 +49,7 @@ const HomeManagement = () => {
       })
       .then((res) => {
         const data = res?.data;
-        if (data) {
+        if (data && data.code === 200) {
           changeSchema(parseJsonByString(data.schema));
         }
       })

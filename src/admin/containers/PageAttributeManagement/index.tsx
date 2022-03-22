@@ -50,7 +50,7 @@ const PageAttributeManagement = () => {
       })
       .then((res) => {
         const data = res?.data;
-        if (data) {
+        if (data && data.code === 200) {
           changeSchema(parseJsonByString(data.schema));
         }
       })
@@ -65,7 +65,7 @@ const PageAttributeManagement = () => {
   return (
     <>
       <div className={styles.row}>
-        <div className={styles.title}>页面标题：</div>
+        <div className={styles.title}>页面标题</div>
         <div className={styles.content}>
           <Input
             value={title}
@@ -77,7 +77,7 @@ const PageAttributeManagement = () => {
         </div>
       </div>
       <div className={styles.row}>
-        <div className={styles.title}>页面描述：</div>
+        <div className={styles.title}>页面描述</div>
         <div className={styles.content}>
           <Input
             value={description}

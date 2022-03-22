@@ -1,7 +1,7 @@
 import { useState, useEffect, lazy, Suspense } from 'react';
 import HomeManagement from './containers/HomeManagement';
 import { Route, Routes, HashRouter as Router, NavLink } from 'react-router-dom';
-import { Layout, Menu, Tooltip, Spin, message } from 'antd';
+import { Layout, Menu, Tooltip, message } from 'antd';
 import {
   SettingOutlined,
   BulbOutlined,
@@ -62,13 +62,11 @@ const MyLayout = () => {
 
   const { collapsed, handleToggleCollapsed } = useCollapsed();
   const { changeSchema } = useStore();
-  const [loading, setLoading] = useState(false);
 
   const login = getLoginStatus();
   const photo = localStorage.photo;
 
   useEffect(() => {
-    setLoading(true);
     axiosInstance
       .get('/getLatestOne', {
         params: {
@@ -84,14 +82,13 @@ const MyLayout = () => {
       })
       .catch(() => {
         message.error('网络错误');
-      })
-      .finally(() => {
-        setLoading(false);
       });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  return login ? (
+  return !login ? (
+    <Login />
+  ) : (
     <Router>
       <Layout>
         <Sider
@@ -154,21 +151,7 @@ const MyLayout = () => {
               <Route
                 path="/attribute"
                 element={
-                  <Suspense
-                    fallback={
-                      <>
-                        <Spin
-                          style={{
-                            margin: '0 auto',
-                            display: 'inline-block',
-                            position: 'fixed',
-                            left: 0,
-                            right: 0,
-                          }}
-                        />
-                      </>
-                    }
-                  >
+                  <Suspense fallback={<></>}>
                     <PageAttributeManagement />
                   </Suspense>
                 }
@@ -176,37 +159,16 @@ const MyLayout = () => {
               <Route
                 path="/form"
                 element={
-                  <Suspense
-                    fallback={
-                      <>
-                        <Spin
-                          style={{
-                            margin: '0 auto',
-                            display: 'inline-block',
-                            position: 'fixed',
-                            left: 0,
-                            right: 0,
-                          }}
-                        />
-                      </>
-                    }
-                  >
+                  <Suspense fallback={<></>}>
                     <FormManagement />
                   </Suspense>
                 }
               ></Route>
             </Routes>
-            {loading ? (
-              <div className={styles.spin}>
-                <Spin />
-              </div>
-            ) : null}
           </Content>
         </Layout>
       </Layout>
     </Router>
-  ) : (
-    <Login />
   );
 };
 

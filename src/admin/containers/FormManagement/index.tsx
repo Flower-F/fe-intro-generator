@@ -32,7 +32,13 @@ const FormManagement = () => {
   return (
     <div className={styles.form}>
       {loading ? (
-        <Spin />
+        <Spin
+          style={{
+            position: 'absolute',
+            left: 0,
+            right: 0,
+          }}
+        />
       ) : (
         <>
           <Divider orientation="center">表单数据</Divider>
