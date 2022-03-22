@@ -20,8 +20,6 @@ const Form: React.FC<IFormProps> = ({ schema }) => {
         const data = res.data;
         if (data && data.code === 200) {
           message.success(data.message);
-        } else {
-          message.warning(data.message);
         }
       })
       .catch(() => {

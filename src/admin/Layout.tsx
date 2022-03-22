@@ -8,6 +8,7 @@ import {
   MenuUnfoldOutlined,
   MenuFoldOutlined,
   FormOutlined,
+  DatabaseOutlined,
 } from '@ant-design/icons';
 import Login from './containers/Login';
 import { parseJsonByString } from '../common/utils';
@@ -19,6 +20,7 @@ import 'antd/dist/antd.css';
 import styles from './style.module.scss';
 import useStore from './hooks/useStore';
 import { logout } from './utils/logout';
+import FormManagement from './containers/FormManagement';
 
 const PageAttributeManagement = lazy(
   () => import('./containers/PageAttributeManagement'),
@@ -49,8 +51,10 @@ const MyLayout = () => {
   };
 
   const getDefaultSelectedKeys = () => {
-    if (window.location.hash === '#/page-attr') {
-      return ['admin-page-attr'];
+    if (window.location.hash === '#/attribute') {
+      return ['admin-attribute'];
+    } else if (window.location.hash === '#/form') {
+      return ['admin-form'];
     } else {
       return ['admin-home'];
     }
@@ -104,8 +108,8 @@ const MyLayout = () => {
             <Menu.Item key="admin-home" icon={<FormOutlined />}>
               <NavLink to="/">首页内容管理</NavLink>
             </Menu.Item>
-            <Menu.Item key="admin-page-attr" icon={<SettingOutlined />}>
-              <NavLink to="/page-attr">页面属性设置</NavLink>
+            <Menu.Item key="admin-attribute" icon={<SettingOutlined />}>
+              <NavLink to="/attribute">页面属性设置</NavLink>
             </Menu.Item>
             <Menu.Item key="admin-back" icon={<BulbOutlined />}>
               <a
@@ -117,6 +121,9 @@ const MyLayout = () => {
               >
                 查看生成页面
               </a>
+            </Menu.Item>
+            <Menu.Item key="admin-form" icon={<DatabaseOutlined />}>
+              <NavLink to="/form">查看表单数据</NavLink>
             </Menu.Item>
           </Menu>
         </Sider>
@@ -145,10 +152,46 @@ const MyLayout = () => {
             <Routes>
               <Route path="/" element={<HomeManagement />}></Route>
               <Route
-                path="/page-attr"
+                path="/attribute"
                 element={
-                  <Suspense fallback={<>loading...</>}>
+                  <Suspense
+                    fallback={
+                      <>
+                        <Spin
+                          style={{
+                            margin: '0 auto',
+                            display: 'inline-block',
+                            position: 'fixed',
+                            left: 0,
+                            right: 0,
+                          }}
+                        />
+                      </>
+                    }
+                  >
                     <PageAttributeManagement />
+                  </Suspense>
+                }
+              ></Route>
+              <Route
+                path="/form"
+                element={
+                  <Suspense
+                    fallback={
+                      <>
+                        <Spin
+                          style={{
+                            margin: '0 auto',
+                            display: 'inline-block',
+                            position: 'fixed',
+                            left: 0,
+                            right: 0,
+                          }}
+                        />
+                      </>
+                    }
+                  >
+                    <FormManagement />
                   </Suspense>
                 }
               ></Route>

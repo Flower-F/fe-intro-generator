@@ -70,7 +70,7 @@ const HomeManagement = () => {
           onClick={handleSaveButtonClick}
           loading={loadingSave}
         >
-          保存区块配置
+          保存组件配置
         </Button>
         <Button
           type="primary"
@@ -79,7 +79,7 @@ const HomeManagement = () => {
           loading={loadingReset}
           disabled={loadingSave}
         >
-          返回上次保存配置
+          恢复最新配置
         </Button>
       </div>
     </>
