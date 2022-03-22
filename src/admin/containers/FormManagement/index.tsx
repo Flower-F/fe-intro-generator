@@ -1,4 +1,4 @@
-import { List, Divider, message, Spin } from 'antd';
+import { Divider, message, Spin, Card } from 'antd';
 import { useEffect, useState } from 'react';
 import { axiosInstance } from '../../../common/request';
 import styles from './style.module.scss';
@@ -42,12 +42,9 @@ const FormManagement = () => {
       ) : (
         <>
           <Divider orientation="center">表单数据</Divider>
-          <List
-            size="large"
-            bordered
-            dataSource={content}
-            renderItem={(item) => (
-              <List.Item>
+          <div>
+            {content.map((item) => (
+              <Card hoverable style={{ marginBottom: 10 }}>
                 {Object.keys(item).map(
                   (key, index) =>
                     item[key] && (
@@ -56,9 +53,9 @@ const FormManagement = () => {
                       </p>
                     ),
                 )}
-              </List.Item>
-            )}
-          />
+              </Card>
+            ))}
+          </div>
         </>
       )}
     </div>
