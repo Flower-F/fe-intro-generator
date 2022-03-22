@@ -1,7 +1,6 @@
 import { Divider, message, Spin, Card } from 'antd';
 import { useEffect, useState } from 'react';
 import { axiosInstance } from '../../../common/request';
-import styles from './style.module.scss';
 
 const FormManagement = () => {
   const [loading, setLoading] = useState(false);
@@ -30,7 +29,7 @@ const FormManagement = () => {
   }, []);
 
   return (
-    <div className={styles.form}>
+    <>
       {loading ? (
         <Spin
           style={{
@@ -43,8 +42,8 @@ const FormManagement = () => {
         <>
           <Divider orientation="center">表单数据</Divider>
           <div>
-            {content.map((item) => (
-              <Card hoverable style={{ marginBottom: 10 }}>
+            {content.map((item, index) => (
+              <Card hoverable style={{ marginBottom: 10 }} key={index}>
                 {Object.keys(item).map(
                   (key, index) =>
                     item[key] && (
@@ -58,7 +57,7 @@ const FormManagement = () => {
           </div>
         </>
       )}
-    </div>
+    </>
   );
 };
 
