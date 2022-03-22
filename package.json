@@ -5,7 +5,6 @@
   "license": "MIT",
   "description": "前端程序员个人介绍页生成器",
   "dependencies": {
-    "@ant-design/pro-list": "^1.21.43",
     "@authing/react-ui-components": "^3.0.12",
     "@babel/core": "^7.16.0",
     "@byteinspire/js-sdk": "^0.5.1",

@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from 'react';
 import { Button, Modal, Select } from 'antd';
-import { cloneDeep } from 'lodash';
+import cloneDeep from 'lodash/cloneDeep';
 import { SortableElement } from 'react-sortable-hoc';
 import Footer from '../../templates/Footer';
 import Detail from '../../templates/Detail';

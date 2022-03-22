@@ -1,5 +1,6 @@
-import { AuthingGuard } from '@authing/react-ui-components';
-import { User } from '@authing/react-ui-components/components/index';
+// import { AuthingGuard } from '@authing/react-ui-components';
+// import { User } from '@authing/react-ui-components/components/index';
+import { AuthingGuard, User } from '@authing/react-ui-components';
 import '@authing/react-ui-components/lib/index.min.css';
 import './style.css';
 

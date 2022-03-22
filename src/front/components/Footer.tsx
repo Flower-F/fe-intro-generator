@@ -18,7 +18,7 @@ const Footer: React.FC<IFooterProps> = ({ schema }) => {
           <li
             key={index}
             className="py-1 p-2 text-base shadow-normal
-          ml-2 leading-8 hover:shadow-hover"
+          ml-2 leading-8 hover:shadow-hover mb-2"
           >
             <a
               href={link}
